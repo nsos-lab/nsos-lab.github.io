@@ -43,10 +43,9 @@
   }
   .logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--navy);font-size:18px}
   .logo-mark{
-    width:34px;height:34px;border-radius:8px;
-    background:linear-gradient(135deg,var(--navy),var(--accent));
-    display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:14px;
-    box-shadow:0 4px 12px rgba(10,37,64,.25);
+    width:40px;height:40px;border-radius:9px;object-fit:cover;
+    background:#fff;padding:3px;border:1px solid var(--border);
+    box-shadow:0 2px 8px rgba(10,37,64,.12);
   }
   .nav-links{display:flex;gap:28px;font-size:14px;font-weight:500}
   .nav-links a{color:var(--text-soft)}
@@ -261,12 +260,12 @@
 <nav class="nav">
   <div class="nav-inner">
     <a href="#" class="logo">
-      <span class="logo-mark">NS</span>
+      <img class="logo-mark" src="assets/nsos-lab-logo.jpg" alt="NSOS Lab logo" />
       <span>NSOS Lab</span>
     </a>
     <div class="nav-links">
       <a href="#research">Research</a>
-      <a href="#team">Team</a>
+      <a href="team.html">Team</a>
       <a href="#publications">Publications</a>
       <a href="#news">News</a>
       <a href="#join">Join Us</a>
@@ -380,55 +379,17 @@
             <div class="member-role">Lecturer &amp; PI · Ph.D. (Southeast Univ.)</div>
             <div class="member-interest">eBPF · Agentic AI Safety</div>
             <div class="member-links">
-              <a href="http://liuxuan.website" target="_blank">Website</a>
-              <a href="#">Google Scholar</a>
-              <a href="#">GitHub</a>
+              <a href="http://liuxuan.website" target="_blank" rel="noopener">Website</a>
+              <a href="https://scholar.google.com/citations?user=N95MHnkAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+              <a href="https://github.com/yusuf1126" target="_blank" rel="noopener">GitHub</a>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="team-group">
-      <div class="team-group-title">PhD Students</div>
-      <div class="team-grid">
-        <!-- placeholder cards — replace with real members -->
-        <div class="member">
-          <div class="avatar">—</div>
-          <div class="member-info">
-            <div class="member-name">Open Position</div>
-            <div class="member-role">PhD · System Security</div>
-            <div class="member-interest">eBPF · Observability</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="team-group">
-      <div class="team-group-title">Master Students</div>
-      <div class="team-grid">
-        <div class="member">
-          <div class="avatar">—</div>
-          <div class="member-info">
-            <div class="member-name">Open Position</div>
-            <div class="member-role">Master · Agentic AI</div>
-            <div class="member-interest">Runtime Safety · LLM</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="team-group">
-      <div class="team-group-title">Alumni</div>
-      <div class="team-grid">
-        <div class="member" style="opacity:.75">
-          <div class="avatar" style="background:linear-gradient(135deg,#64748B,#475569)">—</div>
-          <div class="member-info">
-            <div class="member-name">To be added</div>
-            <div class="member-role">Alumni · Joined industry / academia</div>
-          </div>
-        </div>
-      </div>
+    <div style="margin-top:26px">
+      <a class="btn btn-primary" style="background:var(--navy);box-shadow:0 6px 18px rgba(10,37,64,.25)" href="team.html">View full team &amp; openings →</a>
     </div>
 
   </div>
