@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Publications — NSOS Lab, Yangzhou University</title>
+<meta name="description" content="Complete publication list of NSOS Lab, Yangzhou University: programmable networks, observability, security, and AI agent safety." />
+<style>
+  :root{
+    --navy:#0A2540;
+    --navy-2:#133157;
+    --accent:#FF5E3A;
+    --accent-2:#FFB347;
+    --bg:#F8FAFC;
+    --bg-alt:#FFFFFF;
+    --text:#1A2332;
+    --text-soft:#4A5872;
+    --border:#E4E9F0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI","Helvetica Neue",Arial,sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--navy);text-decoration:none;transition:color .2s}
+  a:hover{color:var(--accent)}
+  code,pre{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+
+  /* ===== Nav ===== */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:1100px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--navy);font-size:18px}
+  .logo-mark{
+    width:34px;height:34px;border-radius:8px;
+    background:linear-gradient(135deg,var(--navy),var(--accent));
+    display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:14px;
+    box-shadow:0 4px 12px rgba(10,37,64,.25);
+  }
+  .nav-links{display:flex;gap:28px;font-size:14px;font-weight:500}
+  .nav-links a{color:var(--text-soft)}
+  .nav-links a:hover{color:var(--accent)}
+  @media(max-width:720px){.nav-links{display:none}}
+
+  /* ===== Hero ===== */
+  .hero{
+    background:
+      radial-gradient(1200px 500px at 80% -10%,rgba(255,94,58,.15),transparent 60%),
+      radial-gradient(1000px 600px at -10% 20%,rgba(19,49,87,.08),transparent 60%),
+      linear-gradient(180deg,#0A2540 0%,#133157 100%);
+    color:#fff;padding:96px 24px 88px;
+    position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse at 50% 30%,black 40%,transparent 80%);
+  }
+  .hero-inner{max-width:1100px;margin:0 auto;position:relative}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 14px;border-radius:999px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+    font-size:13px;color:#CBD5E1;margin-bottom:22px;
+  }
+  .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;box-shadow:0 0 8px #4ADE80}
+  .hero h1{
+    font-size:clamp(38px,5.5vw,62px);
+    line-height:1.08;letter-spacing:-.02em;font-weight:800;
+    margin-bottom:18px;
+  }
+  .hero h1 .accent{
+    background:linear-gradient(90deg,var(--accent-2),var(--accent));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero .tagline{
+    font-size:clamp(17px,1.6vw,20px);
+    color:#CBD5E1;max-width:720px;margin-bottom:32px;
+  }
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+  .chip{
+    font-size:13px;padding:6px 12px;border-radius:6px;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+    color:#E2E8F0;
+  }
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 22px;border-radius:8px;font-weight:600;font-size:15px;
+    transition:transform .15s,box-shadow .15s;
+  }
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 18px rgba(255,94,58,.35)}
+  .btn-primary:hover{transform:translateY(-1px);color:#fff;box-shadow:0 10px 24px rgba(255,94,58,.45)}
+  .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
+  .btn-ghost:hover{background:rgba(255,255,255,.08);color:#fff}
+
+  /* ===== Section base ===== */
+  section{padding:88px 24px}
+  .section-inner{max-width:1100px;margin:0 auto}
+  .section-kicker{
+    font-size:13px;font-weight:700;letter-spacing:.14em;
+    color:var(--accent);text-transform:uppercase;margin-bottom:10px;
+  }
+  .section-title{
+    font-size:clamp(28px,3.2vw,40px);
+    font-weight:800;color:var(--navy);line-height:1.15;letter-spacing:-.01em;
+    margin-bottom:14px;
+  }
+  .section-lead{color:var(--text-soft);max-width:720px;margin-bottom:44px;font-size:17px}
+
+  /* ===== Research ===== */
+  .research-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;
+  }
+  .rcard{
+    background:#fff;border:1px solid var(--border);border-radius:14px;padding:28px;
+    transition:transform .2s,box-shadow .2s,border-color .2s;
+    position:relative;overflow:hidden;
+  }
+  .rcard:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(10,37,64,.08);border-color:transparent}
+  .rcard::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--navy),var(--accent));
+    opacity:0;transition:opacity .25s;
+  }
+  .rcard:hover::before{opacity:1}
+  .ricon{
+    width:46px;height:46px;border-radius:11px;
+    background:linear-gradient(135deg,#EEF2FF,#FFE7DD);
+    display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px;
+  }
+  .rcard h3{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:10px}
+  .rcard p{color:var(--text-soft);font-size:15px}
+  .rtags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+  .rtag{font-size:12px;color:var(--navy-2);background:#F1F5F9;padding:3px 9px;border-radius:4px}
+
+  /* ===== Team ===== */
+  #team{background:var(--bg-alt)}
+  .team-group{margin-bottom:44px}
+  .team-group:last-child{margin-bottom:0}
+  .team-group-title{
+    font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--text-soft);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--border);
+  }
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+  .member{
+    background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;
+    display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+    transition:border-color .2s,transform .2s;
+  }
+  .member:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .avatar{
+    width:56px;height:56px;border-radius:50%;
+    background:linear-gradient(135deg,var(--navy),var(--accent));
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:18px;flex-shrink:0;
+  }
+  .member-info{flex:1;min-width:0}
+  .member-name{font-weight:700;color:var(--navy);font-size:15px}
+  .member-role{font-size:13px;color:var(--text-soft);margin-top:2px}
+  .member-interest{font-size:12px;color:var(--accent);margin-top:6px}
+  .member-links{display:flex;gap:10px;margin-top:8px}
+  .member-links a{font-size:12px;color:var(--text-soft)}
+  .member-links a:hover{color:var(--accent)}
+
+  /* ===== Publications ===== */
+  .pub-year{
+    font-size:13px;font-weight:700;color:var(--accent);
+    letter-spacing:.08em;margin-bottom:12px;margin-top:28px;
+  }
+  .pub-year:first-of-type{margin-top:0}
+  .pub{
+    background:#fff;border:1px solid var(--border);border-radius:10px;
+    padding:18px 22px;margin-bottom:10px;
+    transition:border-color .2s;
+  }
+  .pub:hover{border-color:var(--navy)}
+  .pub-title{font-weight:600;color:var(--navy);font-size:16px;line-height:1.4}
+  .pub-title a:hover{color:var(--accent)}
+  .pub-authors{font-size:14px;color:var(--text-soft);margin-top:6px}
+  .pub-authors strong{color:var(--text);font-weight:600}
+  .pub-venue{font-size:13px;color:var(--navy-2);margin-top:6px;font-style:italic}
+  .pub-tags{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .ptag{
+    font-size:11px;font-weight:600;padding:3px 9px;border-radius:4px;
+    background:#F1F5F9;color:var(--navy-2);border:1px solid transparent;
+  }
+  .ptag.pdf{background:#FFE7DD;color:#C2410C}
+  .ptag.code{background:#DCFCE7;color:#166534}
+  .ptag.tag-topic{background:#EEF2F7;color:#334155}
+  .ptag.tier-a{background:#FEE2E2;color:#B91C1C;font-weight:700}
+  .ptag.tier-b{background:#FFEDD5;color:#C2410C}
+  .ptag.tier-c{background:#E0E7FF;color:#3730A3}
+  .ptag.tier-sci{background:#DBEAFE;color:#1D4ED8}
+  .ptag.tier-pre{background:#F3E8FF;color:#7E22CE}
+  .ptag.tier-cn{background:#FEF9C3;color:#854D0E}
+  .ptag.tier-ed{background:#F1F5F9;color:#475569}
+
+  /* ===== News ===== */
+  #news{background:var(--bg-alt)}
+  .news-list{display:flex;flex-direction:column;gap:14px}
+  .news-item{
+    display:flex;gap:18px;padding:14px 18px;
+    background:#fff;border:1px solid var(--border);border-radius:10px;
+  }
+  .news-date{
+    flex-shrink:0;min-width:90px;font-size:13px;font-weight:700;color:var(--accent);
+    padding-top:2px;
+  }
+  .news-body{flex:1;font-size:14.5px;color:var(--text)}
+  .news-tag{
+    display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;
+    padding:2px 8px;border-radius:4px;background:#EEF2FF;color:var(--navy);margin-right:8px;
+  }
+
+  /* ===== Join Us ===== */
+  .join{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    color:#fff;padding:64px 24px;text-align:center;
+  }
+  .join-inner{max-width:720px;margin:0 auto}
+  .join h2{font-size:clamp(26px,3vw,34px);font-weight:800;margin-bottom:14px;letter-spacing:-.01em}
+  .join p{color:#CBD5E1;margin-bottom:26px;font-size:16.5px}
+  .join .btn-primary{background:var(--accent)}
+
+  /* ===== Footer ===== */
+  footer{
+    background:#061A30;color:#94A3B8;padding:44px 24px;
+    font-size:14px;
+  }
+  .footer-inner{
+    max-width:1100px;margin:0 auto;
+    display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;
+  }
+  footer a{color:#CBD5E1}
+  footer a:hover{color:var(--accent)}
+  @media(max-width:600px){
+    .footer-inner{grid-template-columns:1fr;text-align:center}
+    .news-item{flex-direction:column;gap:6px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">NS</span>
+      <span>NSOS Lab</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">← Home</a>
+      <a href="index.html#research">Research</a>
+      <a href="index.html#team">Team</a>
+      <a href="#publications" style="color:var(--accent)">Publications</a>
+      <a href="http://liuxuan.website" target="_blank" rel="noopener">PI →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== SUB HEADER ========== -->
+<header class="hero" style="padding:64px 24px 56px">
+  <div class="hero-inner">
+    <img class="hero-logo" src="assets/nsos-lab-logo.jpg" alt="NSOS Lab, Yangzhou University logo" style="width:84px;height:84px;margin-bottom:18px" />
+    <div class="hero-badge"><span class="dot"></span><span>NSOS Lab · Yangzhou University</span></div>
+    <h1 style="font-size:clamp(30px,4vw,44px)">Publications</h1>
+    <p class="tagline" style="margin-bottom:0">Complete list of our papers from 2017 to 2026.</p>
+  </div>
+</header>
+
+<!-- ========== PUBLICATIONS ========== -->
+<section id="publications">
+  <div class="section-inner">
+    <div class="section-kicker">Publications</div>
+    <h2 class="section-title">Selected publications.</h2>
+    <p class="section-lead">Complete publication list (2017–2026). Citation metrics on <a href="https://scholar.google.com/citations?user=N95MHnkAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+    <div class="pub-year">2026</div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://www.usenix.org/system/files/nsdi26-chen-xiang.pdf" target="_blank" rel="noopener">SketchPipe: Toward Accurate Sketch-Based Network Measurement on Multi-Pipeline Switches with Splitless Sketch Placement</a></div>
+      <div class="pub-authors">Xiang Chen, Longlong Zhu, Linying Zheng, Hongyang Du, Dong Zhang, Jianshan Zhang, <strong>Xuan Liu</strong>, Qun Huang, Dusit Niyato, Haifeng Zhou, Chunming Wu, Hongyan Liu, Kui Ren</div>
+      <div class="pub-venue">NSDI 2026</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Network Measurement</span><span class="ptag tier-a">CCF A</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">When Address Learning Goes Wrong: Inducing Forwarding Loops and DoS Amplification in SDN</div>
+      <div class="pub-authors">Dezhang Kong, Yilun Zhang, Zekun Xie, Ningpeng Zheng, Shi Lin, Zhenhua Xu, Minghao Li, Zhebo Wang, Xiang Chen, Changting Lin, Dong Zhang, <strong>Xuan Liu</strong>, Chunming Wu, Meng Han</div>
+      <div class="pub-venue">USENIX Security 2026</div>
+      <div class="pub-tags"><span class="ptag tag-topic">SDN Security</span><span class="ptag tier-a">CCF A</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">LTD: Low-Overhead Topology Discovery using Programmable Data Planes</div>
+      <div class="pub-authors">Dezhang Kong, Minghao Li, Shi Lin, Zhenhua Xu, Longlong Zhu, Linying Zheng, Xiang Chen, Changting Lin, <strong>Xuan Liu</strong>, Dong Zhang, Chunming Wu, Meng Han</div>
+      <div class="pub-venue">IEEE INFOCOM 2026</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Programmable Networks</span><span class="ptag tier-a">CCF A</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">OmniPlan: An Adaptive Framework for Timely and Near-Optimal Network Planning Optimization</div>
+      <div class="pub-authors">Longlong Zhu, Jiashuo Yu, Zedi Chen, Yuhan Wu, Zhifan Jiang, Yuchen Xian, Yimeng Liu, Jiajie Su, Shaopeng Zhou, Xingyuan Li, Hongyan Liu, <strong>Xuan Liu</strong>, Dong Zhang, Chunming Wu, Xiang Chen</div>
+      <div class="pub-venue">KDD 2026</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Network Planning</span><span class="ptag tier-a">CCF A</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">MonPlan: Taming Network Measurement with Accurate and Resource-Efficient Sketch-INT Co-Design</div>
+      <div class="pub-authors">Xiang Chen, Linying Zheng, Longlong Zhu, Zedi Chen, Qing Shu, Jialu Tian, Siqi Dong, Qun Huang, Jianshan Zhang, <strong>Xuan Liu</strong>, Haifeng Zhou, Hongyan Liu, Dong Zhang, Chunming Wu</div>
+      <div class="pub-venue">IEEE INFOCOM 2026</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Network Measurement</span><span class="ptag tier-a">CCF A</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://doi.org/10.48550/arXiv.2601.18113" target="_blank" rel="noopener">MalURLBench: A Benchmark Evaluating Agents' Vulnerabilities When Processing Web URLs</a></div>
+      <div class="pub-authors">Dezhang Kong, Zhuxi Wu, Shiqi Liu, Zhicheng Tan, Kuichen Lu, Minghao Li, Qichen Liu, Shengyu Chu, Zhenhua Xu, <strong>Xuan Liu</strong>, Meng Han</div>
+      <div class="pub-venue">ACL 2026</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Agent Security</span><span class="ptag tier-a">CCF A</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="http://dx.doi.org/10.1109/TR.2026.3685261" target="_blank" rel="noopener">Mitigating the Lateral Movement of APT in IIoT with an Efficient Moving Target Defense and Cyber Deception Approach</a></div>
+      <div class="pub-authors">Xiaodong Zang, Fangbo Hou, <strong>Xuan Liu</strong>, Muhammad Khurram Khan, Daohua Liu</div>
+      <div class="pub-venue">IEEE Transactions on Reliability, 2026</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Moving Target Defense</span><span class="ptag tier-sci">SCI</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="http://dx.doi.org/10.1109/TCE.2026.3655669" target="_blank" rel="noopener">A Cost-effective Proactive Defense Method against Reconnaissance Attack for Industry 5.0</a></div>
+      <div class="pub-authors">Xiaodong Zang, Haosheng Zheng, Zilong Zheng, <strong>Xuan Liu</strong>, Muhammad Khurram Khan</div>
+      <div class="pub-venue">IEEE Transactions on Consumer Electronics, 72(1), 2026</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Proactive Defense</span><span class="ptag tier-sci">SCI</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="http://dx.doi.org/10.1109/MCOM.001.2500254" target="_blank" rel="noopener">Leveraging Large Language Models for Multi-Objective and Adaptive SFC Deployment: Techniques, Case Study, and Promising Directions</a></div>
+      <div class="pub-authors">Longlong Zhu, Jiashuo Yu, Xiang Chen, Zhifan Jiang, <strong>Xuan Liu</strong>, Jianshan Zhang, Xu Yang, Ruichen Zhang, Dusit Niyato, Xun Yi, Ibrahim Khalil, Dong Zhang, Chunming Wu</div>
+      <div class="pub-venue">IEEE Communications Magazine, 64(1), 2026</div>
+      <div class="pub-tags"><span class="ptag tag-topic">LLM for Networking</span><span class="ptag tier-sci">SCI</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub-year">2025</div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://doi.org/10.1109/ICNP65844.2025.11192430" target="_blank" rel="noopener">Carrera: Enabling High-Performance eBPF-based Sketches in Network Measurement</a></div>
+      <div class="pub-authors">Xiang Chen, Xin Yao, Jiayu Li, Longlong Zhu, Linying Zheng, Hongyan Liu, Jianshan Zhang, Dong Zhang, <strong>Xuan Liu</strong>, Qun Huang, Haifeng Zhou, Chunming Wu</div>
+      <div class="pub-venue">IEEE ICNP 2025</div>
+      <div class="pub-tags"><span class="ptag tag-topic">eBPF</span><span class="ptag tier-b">CCF B</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://doi.org/10.1016/j.jnca.2025.104334" target="_blank" rel="noopener">FlowTracker: A Refined and Versatile Data Plane Measurement Approach</a></div>
+      <div class="pub-authors">Xinyue Jiang, Chunming Wu, Zhengyan Zhou, Di Wang, Dezhang Kong, Muhammad Khurram Khan, <strong>Xuan Liu</strong></div>
+      <div class="pub-venue">Journal of Network and Computer Applications, 244, 2025</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Measurement</span><span class="ptag tier-c">CCF C</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="http://dx.doi.org/10.1109/TCE.2025.3604228" target="_blank" rel="noopener">Hierarchical Graph Neural Networks for Resilient Intrusion Detection in Consumer IoT With Limited Labeled Data</a></div>
+      <div class="pub-authors">Guolong Zheng, Changgui Xu, Jianshan Zhang, Chen Hou, Xu Yang, Tao Huang, <strong>Xuan Liu</strong>, Muhammad Khurram Khan</div>
+      <div class="pub-venue">IEEE Transactions on Consumer Electronics, 72(1), 2026</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Intrusion Detection</span><span class="ptag tier-sci">SCI</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://doi.org/10.1016/j.cose.2025.104593" target="_blank" rel="noopener">NDIF: A Distributed Framework for Efficient In-Network Neural Network Inference</a></div>
+      <div class="pub-authors">Shengrui Lin, Shaowei Xu, Binjie He, Hongyan Liu, Dezhang Kong, Xiang Chen, Dong Zhang, Chunming Wu, Ming Li, <strong>Xuan Liu</strong>, Yuqin Wu, Muhammad Khurram Khan</div>
+      <div class="pub-venue">Computers &amp; Security, 157, 2025</div>
+      <div class="pub-tags"><span class="ptag tag-topic">In-Network ML</span><span class="ptag tier-b">CCF B</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="http://dx.doi.org/10.1109/TON.2025.3580638" target="_blank" rel="noopener">Toward Secure Inter-Device Coordination in Programmable Networks</a></div>
+      <div class="pub-authors">Hongyan Liu, Xiang Chen, Di Wang, Qun Huang, Dong Zhang, Chunming Wu, <strong>Xuan Liu</strong></div>
+      <div class="pub-venue">IEEE/ACM Transactions on Networking, 33(6), 2025</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Programmable Networks</span><span class="ptag tier-a">CCF A</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="http://dx.doi.org/10.1109/IWQoS65803.2025.11143248" target="_blank" rel="noopener">Handling Data Plane Program Deployment Dynamics with High-Quality Generative Diffusion Models</a></div>
+      <div class="pub-authors">Longlong Zhu, Jiashuo Yu, Xiang Chen, Qing Shu, Zedi Chen, Zhifan Jiang, Qun Huang, <strong>Xuan Liu</strong>, Dong Zhang, Chunming Wu</div>
+      <div class="pub-venue">IEEE/ACM IWQoS 2025</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Programmable Networks</span><span class="ptag tier-b">CCF B</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://doi.org/10.48550/arXiv.2506.19676" target="_blank" rel="noopener">A Survey of LLM-Driven AI Agent Communication: Protocols, Security Risks, and Defense Countermeasures</a></div>
+      <div class="pub-authors">Dezhang Kong, Shi Lin, Zhenhua Xu, Zhebo Wang, Minghao Li, Yufeng Li, Yilun Zhang, Hujin Peng, Xiang Chen, Zeyang Sha, Yuyuan Li, Changting Lin, Xun Wang, <strong>Xuan Liu</strong>, Ningyu Zhang, Chaochao Chen, Chunming Wu, Muhammad Khurram Khan, Meng Han</div>
+      <div class="pub-venue">arXiv preprint arXiv:2506.19676, 2025</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Agent Security</span><span class="ptag tier-pre">Preprint</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="http://dx.doi.org/10.1109/INFOCOM55648.2025.11044585" target="_blank" rel="noopener">TurboCache: Empowering Switch-Accelerated Key-Value Caches with Accurate and Fast Cache Updates</a></div>
+      <div class="pub-authors">Dezhang Kong, Minghao Li, Shi Lin, Zhenhua Xu, Longlong Zhu, Linying Zheng, Xiang Chen, Changting Lin, <strong>Xuan Liu</strong>, Dong Zhang, Chunming Wu, Meng Han</div>
+      <div class="pub-venue">IEEE INFOCOM 2025</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Programmable Networks</span><span class="ptag tier-a">CCF A</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="http://dx.doi.org/10.1109/TCE.2025.3558353" target="_blank" rel="noopener">HyperEye: A Lightweight Features Fusion Model for Unknown Encrypted Malware Traffic Detection</a></div>
+      <div class="pub-authors">Xiaodong Zang, Zilong Zheng, Haosheng Zheng, <strong>Xuan Liu</strong>, Muhammad Khurram Khan, Weiwei Jiang</div>
+      <div class="pub-venue">IEEE Transactions on Consumer Electronics, 71(2), 2025</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Malware Traffic</span><span class="ptag tier-sci">SCI</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="http://dx.doi.org/10.1109/TNSE.2025.3557164" target="_blank" rel="noopener">An Adaptive AQM based on the Consecutive Change Detection in the Programmable Queue</a></div>
+      <div class="pub-authors">Xinyue Jiang, Dezhang Kong, Xiang Chen, Shuangxi Chen, Haifeng Zhou, Chunming Wu, <strong>Xuan Liu</strong>, Wei Ruan</div>
+      <div class="pub-venue">IEEE Transactions on Network Science and Engineering, 12(4), 2025</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Programmable Queue</span><span class="ptag tier-sci">SCI</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">Phantom: Virtualizing Switch Register Resources for Accurate Sketch-based Network Measurement</div>
+      <div class="pub-authors">Xiang Chen, Hongyan Liu, Zhengyan Zhou, Xi Sun, Wenbin Zhang, Hongyang Du, Dong Zhang, <strong>Xuan Liu</strong>, Haifeng Zhou, Dusit Niyato, Qun Huang, Chunming Wu, Kui Ren</div>
+      <div class="pub-venue">EuroSys 2025</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Network Measurement</span><span class="ptag tier-a">CCF A</span></div>
+    </div>
+    <div class="pub-year">2024</div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://doi.org/10.1007/978-3-031-93251-9_17" target="_blank" rel="noopener">SWGCNN-BiLSTM: A Method for Detecting Unknown Attack Traffic Within Imbalanced Samples</a></div>
+      <div class="pub-authors">Yiwen Fan, <strong>Xuan Liu</strong>, Rong Yan, Haoran Yin, Yaxin Zhang</div>
+      <div class="pub-venue">EAI CollaborateCom 2024</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Traffic Detection</span><span class="ptag tier-c">CCF C</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://doi.org/10.1109/TGCN.2024.3432781" target="_blank" rel="noopener">NetDP: In-Network Differential Privacy for Large-Scale Data Processing</a></div>
+      <div class="pub-authors">Zhengyan Zhou, Hanze Chen, Lingfei Chen, Dong Zhang, Chunming Wu, <strong>Xuan Liu</strong>, Muhammad Khurram Khan</div>
+      <div class="pub-venue">IEEE Transactions on Green Communications and Networking, 8(3), 2024</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Privacy</span><span class="ptag tier-sci">SCI</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3651890.3672244" target="_blank" rel="noopener">Eagle: Toward Scalable and Near-Optimal Network-Wide Sketch Deployment in Network Measurement</a></div>
+      <div class="pub-authors">Xiang Chen, Qingjiang Xiao, Hongyan Liu, Qun Huang, Dong Zhang, <strong>Xuan Liu</strong>, Longbing Hu, Haifeng Zhou, Chunming Wu, Kui Ren</div>
+      <div class="pub-venue">ACM SIGCOMM 2024</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Network Measurement</span><span class="ptag tier-a">CCF A</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10806884" target="_blank" rel="noopener">Virtualizing Next-generation Programmable Networks: Techniques, Use Cases, and Promising Future Directions</a></div>
+      <div class="pub-authors">Xiang Chen, Hongyang Du, Wenjing Liu, Hongyan Liu, Jianshan Zhang, Xu Yang, Dong Zhang, Chunming Wu, <strong>Xuan Liu</strong>, Dusit Niyato</div>
+      <div class="pub-venue">IEEE Network, 2024</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Programmable Networks</span><span class="ptag tier-sci">SCI</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="http://dx.doi.org/10.1109/TNET.2024.3504578" target="_blank" rel="noopener">Elastically Scaling Control Channels in Network Measurement With Escala</a></div>
+      <div class="pub-authors">Hongyan Liu, Xiang Chen, Qun Huang, Dezhang Kong, Dong Zhang, Chunming Wu, <strong>Xuan Liu</strong></div>
+      <div class="pub-venue">IEEE/ACM Transactions on Networking, 2024</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Network Measurement</span><span class="ptag tier-a">CCF A</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://dx.doi.org/10.1109/TNSM.2024.3504563" target="_blank" rel="noopener">Toward Security-Enhanced In-band Network Telemetry in Programmable Networks</a></div>
+      <div class="pub-authors">Dezhang Kong, Xiang Chen, Hang Lin, Zhengyan Zhou, Yi Shen, Hongyan Liu, Qiumei Cheng, <strong>Xuan Liu</strong>, Dong Zhang, Chunming Wu, Muhammad Khurram Khan</div>
+      <div class="pub-venue">IEEE Transactions on Network and Service Management, 2024</div>
+      <div class="pub-tags"><span class="ptag tag-topic">INT Security</span><span class="ptag tier-c">CCF C</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="http://dx.doi.org/10.1109/TNET.2024.3421327" target="_blank" rel="noopener">Toward Full-Coverage and Low-Overhead Profiling of Network-Stack Latency</a></div>
+      <div class="pub-authors">Xiang Chen, Hongyan Liu, Qun Huang, Wenbin Zhang, Qun Huang, Dong Zhang, <strong>Xuan Liu</strong>, Haifeng Zhou, Chunming Wu</div>
+      <div class="pub-venue">IEEE/ACM Transactions on Networking, 32(5), 2024</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Latency Profiling</span><span class="ptag tier-a">CCF A</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://dx.doi.org/10.1109/TIFS.2024.3472477" target="_blank" rel="noopener">rDefender: A Lightweight and Robust Defense Against Flow Table Overflow Attacks in SDN</a></div>
+      <div class="pub-authors">Dezhang Kong, Xiang Chen, Chunming Wu, Yi Shen, Zhengyan Zhou, Qiumei Cheng, <strong>Xuan Liu</strong>, Mingliang Yang, Yubing Qiu, Dong Zhang, Muhammad Khurram Khan</div>
+      <div class="pub-venue">IEEE Transactions on Information Forensics and Security, 2024</div>
+      <div class="pub-tags"><span class="ptag tag-topic">SDN Security</span><span class="ptag tier-a">CCF A</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="http://dx.doi.org/10.1109/TNET.2024.3413388" target="_blank" rel="noopener">Toward Resource-Efficient and High-Performance Program Deployment in Programmable Networks</a></div>
+      <div class="pub-authors">Hongyan Liu, Xiang Chen, Qun Huang, Guoqiang Sun, Peiqiao Wang, Dong Zhang, Chunming Wu, <strong>Xuan Liu</strong>, Qiang Yang</div>
+      <div class="pub-venue">IEEE/ACM Transactions on Networking, 2024</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Programmable Networks</span><span class="ptag tier-a">CCF A</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="http://dx.doi.org/10.1109/TNET.2024.3413530" target="_blank" rel="noopener">Resource-Efficient and Timely Packet Header Vector (PHV) Encoding on Programmable Switches</a></div>
+      <div class="pub-authors">Xiang Chen, Wenbin Zhang, Xi Sun, Hongyan Liu, Jianshan Zhang, Qun Huang, Dong Zhang, Haifeng Zhou, Boyang Zhou, <strong>Xuan Liu</strong>, Chunming Wu</div>
+      <div class="pub-venue">IEEE/ACM Transactions on Networking, 2024</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Programmable Networks</span><span class="ptag tier-a">CCF A</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://doi.org/10.1016/j.jnca.2024.103904" target="_blank" rel="noopener">Terra: Low-latency and Reliable Event Collection in Network Measurement</a></div>
+      <div class="pub-authors">Hongyan Liu, Xi Sun, Xiang Chen, Qun Huang, Dong Zhang, Haifeng Zhou, Chunming Wu, <strong>Xuan Liu</strong>, Muhammad Khurram Khan</div>
+      <div class="pub-venue">Journal of Network and Computer Applications, 2024</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Measurement</span><span class="ptag tier-c">CCF C</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://doi.org/10.1109/TNET.2024.3361324" target="_blank" rel="noopener">Hermes: Low-Overhead Inter-Switch Coordination in Network-Wide Data Plane Program Deployment</a></div>
+      <div class="pub-authors">Xiang Chen, Hongyan Liu, Qingjiang Xiao, Qun Huang, Dong Zhang, Haifeng Zhou, Boyang Zhou, Chunming Wu, <strong>Xuan Liu</strong>, Qiang Yang</div>
+      <div class="pub-venue">IEEE/ACM Transactions on Networking, 2024</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Programmable Networks</span><span class="ptag tier-a">CCF A</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">Accelerating Sketch-based End-Host Traffic Measurement with Automatic DPU Offloading</div>
+      <div class="pub-authors">Xiang Chen, Xi Sun, Wenbin Zhang, Zizheng Wang, Xin Yao, Hongyan Liu, Gaoning Pan, Qun Huang, <strong>Xuan Liu</strong>, Haifeng Zhou, Chunming Wu</div>
+      <div class="pub-venue">IEEE INFOCOM 2024</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Measurement</span><span class="ptag tier-a">CCF A</span></div>
+    </div>
+    <div class="pub-year">2023</div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://doi.org/10.1109/TIFS.2023.3315128" target="_blank" rel="noopener">Stalker Attacks: Imperceptibly Dropping Sketch Measurement Accuracy on Programmable Switches</a></div>
+      <div class="pub-authors">Xiang Chen, Hongyan Liu, Qun Huang, Dong Zhang, Haifeng Zhou, Chunming Wu, <strong>Xuan Liu</strong>, Muhammad Khurram Khan</div>
+      <div class="pub-venue">IEEE Transactions on Information Forensics and Security, 18, 2023</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Adversarial Measurement</span><span class="ptag tier-a">CCF A</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://doi.org/10.1109/COMST.2023.3265984" target="_blank" rel="noopener">Empowering Network Security with Programmable Switches: A Comprehensive Survey</a></div>
+      <div class="pub-authors">Xiang Chen, Chunming Wu, <strong>Xuan Liu</strong>, Qun Huang, Dong Zhang, Haifeng Zhou, Qiang Yang, Muhammad Khurram Khan</div>
+      <div class="pub-venue">IEEE Communications Surveys &amp; Tutorials, 25(3), 2023</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Survey</span><span class="ptag tier-sci">SCI</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">Melody: Toward Resource-Efficient Packet Header Vector Encoding on Programmable Switches</div>
+      <div class="pub-authors">Xiang Chen, Hongyan Liu, Qingjiang Xiao, Jianshan Zhang, Qun Huang, Dong Zhang, <strong>Xuan Liu</strong>, Chunming Wu</div>
+      <div class="pub-venue">IEEE INFOCOM 2023</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Programmable Networks</span><span class="ptag tier-a">CCF A</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">Excalibur: A Scalable and Low-Cost Traffic Testing Framework for Evaluating DDoS Defense Solutions</div>
+      <div class="pub-authors">Xiang Chen, Hongyan Liu, Tingxin Sun, Qun Huang, Dong Zhang, <strong>Xuan Liu</strong>, Boyang Zhou, Haifeng Zhou, Chunming Wu</div>
+      <div class="pub-venue">IEEE INFOCOM 2023</div>
+      <div class="pub-tags"><span class="ptag tag-topic">DDoS</span><span class="ptag tier-a">CCF A</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://doi.org/10.1109/TNET.2023.3281449" target="_blank" rel="noopener">Toward Scalable and Low-Cost Traffic Testing for Evaluating DDoS Defense Solutions</a></div>
+      <div class="pub-authors">Xiang Chen, Hongyan Liu, Qun Huang, Dong Zhang, Haifeng Zhou, Chunming Wu, <strong>Xuan Liu</strong></div>
+      <div class="pub-venue">IEEE/ACM Transactions on Networking, 2024</div>
+      <div class="pub-tags"><span class="ptag tag-topic">DDoS</span><span class="ptag tier-a">CCF A</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://doi.org/10.1109/TNET.2022.3218446" target="_blank" rel="noopener">Toward Low-Latency and Accurate State Synchronization for Programmable Networks</a></div>
+      <div class="pub-authors">Xiang Chen, Hongyan Liu, Qun Huang, Dong Zhang, Haifeng Zhou, Chunming Wu, <strong>Xuan Liu</strong>, Qiang Yang</div>
+      <div class="pub-venue">IEEE/ACM Transactions on Networking, 31(3), 2023</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Programmable Networks</span><span class="ptag tier-a">CCF A</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="https://doi.org/10.1109/TNET.2022.3203561" target="_blank" rel="noopener">Combination Attacks and Defenses on SDN Topology Discovery</a></div>
+      <div class="pub-authors">Dezhang Kong, Yi Shen, Xiang Chen, Qiumei Cheng, Hongyan Liu, Dong Zhang, <strong>Xuan Liu</strong>, Shuangxi Chen, Chunming Wu</div>
+      <div class="pub-venue">IEEE/ACM Transactions on Networking, 31(2), 2023</div>
+      <div class="pub-tags"><span class="ptag tag-topic">SDN Security</span><span class="ptag tier-a">CCF A</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="http://dx.doi.org/10.1109/TCC.2022.3149817" target="_blank" rel="noopener">Automatic Performance-Optimal Offloading of Network Functions on Programmable Switches</a></div>
+      <div class="pub-authors">Xiang Chen, Hongyan Liu, Dong Zhang, Zili Meng, Qun Huang, Haifeng Zhou, Chunming Wu, <strong>Xuan Liu</strong>, Qiang Yang</div>
+      <div class="pub-venue">IEEE Transactions on Cloud Computing, 11(2), 2023</div>
+      <div class="pub-tags"><span class="ptag tag-topic">NFV</span><span class="ptag tier-c">CCF C</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title"><a href="http://dx.doi.org/10.1109/ICDCS54860.2022.00043" target="_blank" rel="noopener">Toward Low-Overhead Inter-Switch Coordination in Network-Wide Data Plane Program Deployment</a></div>
+      <div class="pub-authors">Xiang Chen, Hongyan Liu, Qingjiang Xiao, Kaiwei Guo, Tingxin Sun, Xiang Ling, <strong>Xuan Liu</strong>, Qun Huang, Dong Zhang, Haifeng Zhou, Fan Zhang, Chunming Wu</div>
+      <div class="pub-venue">IEEE ICDCS 2022</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Programmable Networks</span><span class="ptag tier-b">CCF B</span><span class="ptag pdf">PDF</span></div>
+    </div>
+    <div class="pub-year">2022</div>
+    <div class="pub">
+      <div class="pub-title">Dual-Meta Network Architecture Driven by Content and Address</div>
+      <div class="pub-authors">Peng Yang, <strong>Xuan Liu</strong>, Youping Li</div>
+      <div class="pub-venue">Strategic Study of CAE, 24(4), 2022 (in Chinese)</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Network Architecture</span><span class="ptag tier-cn">中文</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">Enabling Low-Latency Service Function Chains by Merging Duplicate Match Operations</div>
+      <div class="pub-authors">Dong Zhang, Kaiwei Guo, Xiang Chen, <strong>Xuan Liu</strong></div>
+      <div class="pub-venue">IET Networks, 11(5), 2022</div>
+      <div class="pub-tags"><span class="ptag tag-topic">SFC</span><span class="ptag tier-sci">SCI</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">Quality Enhancement in a mm-Wave Multi-hop, Multi-Tier Heterogeneous 5G Network Architecture</div>
+      <div class="pub-authors">Aftab Ahmed Khan, Muhammad Zakarya, <strong>Xuan Liu</strong>, Rahim Khan, Ahmad Ali, Ayaz Ali Khan</div>
+      <div class="pub-venue">Telecommunication Systems, 80(2), 2022</div>
+      <div class="pub-tags"><span class="ptag tag-topic">5G</span><span class="ptag tier-sci">SCI</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">5G-and-Beyond Communications for Smart Cities: Networks, Systems and Applications</div>
+      <div class="pub-authors">Minghua Xia, Edmund Lai, Jie Hu, <strong>Xuan Liu</strong>, et al.</div>
+      <div class="pub-venue">Frontiers in Communications and Networks, 3, 2022</div>
+      <div class="pub-tags"><span class="ptag tag-topic">5G</span><span class="ptag tier-sci">SCI</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">GTF: An Adaptive Network Anomaly Detection Method at the Network Edge</div>
+      <div class="pub-authors">Renjie Li, Zhou Zhou, <strong>Xuan Liu</strong>, Da Li, Wei Yang, Shu Li, Qingyun Liu</div>
+      <div class="pub-venue">Security and Communication Networks, 2021</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Anomaly Detection</span><span class="ptag tier-c">CCF C</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">Collaborative Filtering Driven by Fast Semantic Feature Analysis on Spark</div>
+      <div class="pub-authors">Peng Yang, Liang Gu, <strong>Xuan Liu</strong></div>
+      <div class="pub-venue">Wireless Networks, 28, 2022</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Data Analytics</span><span class="ptag tier-c">CCF C</span></div>
+    </div>
+    <div class="pub-year">2021</div>
+    <div class="pub">
+      <div class="pub-title">Amalgamation of Blockchain and Sixth-Generation-Envisioned Responsive Edge Orchestration in Future Cellular V2X Ecosystems</div>
+      <div class="pub-authors">Pronaya Bhattacharya, Umesh Bodkhe, Mohd Zuhair, Mamoon Rashid, <strong>Xuan Liu</strong>, Ashwin Verma, Ram Kishan Dewangan</div>
+      <div class="pub-venue">Wiley Transactions on Emerging Telecommunications Technologies, 2021</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Blockchain / V2X</span><span class="ptag tier-sci">SCI</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">IoT Sensing, Applications, and Technologies for Smart Sustainable Cities</div>
+      <div class="pub-authors">Gerhard P. Hancke, Mohammad Reza Salehizadeh, <strong>Xuan Liu</strong>, Jie Hu, et al.</div>
+      <div class="pub-venue">IET Smart Cities, 3(3), 2021</div>
+      <div class="pub-tags"><span class="ptag tag-topic">IoT</span><span class="ptag tier-sci">SCI</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">MalDroid: Secure DL-Enabled Intelligent Malware Detection Framework</div>
+      <div class="pub-authors">Ikram Ul Haq, Tamim Ahmed Khan, Adnan Akhunzada, <strong>Xuan Liu</strong></div>
+      <div class="pub-venue">IET Communications, 2021</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Malware Detection</span><span class="ptag tier-c">CCF C</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">Unsupervised Derivation of Keyword Summary for Short Texts</div>
+      <div class="pub-authors">Bin Cao, Jiawei Wu, Sichao Wang, Jing Fan, Honghao Gao, Shuiguang Deng, Jianwei Yin, <strong>Xuan Liu</strong></div>
+      <div class="pub-venue">ACM Transactions on Internet Technology, 21(2), 2021</div>
+      <div class="pub-tags"><span class="ptag tag-topic">NLP</span><span class="ptag tier-b">CCF B</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">Integration of Satellite-Aerial-Terrestrial Networks</div>
+      <div class="pub-authors"><strong>Xuan Liu</strong>, Pascal Lorenz, Periklis Chatzimisios, Syed Hassan Ahmed, Safdar Hussain Bouk, Honghao Gao</div>
+      <div class="pub-venue">Wiley Transactions on Emerging Telecommunications Technologies, 2021</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Satellite Networks</span><span class="ptag tier-sci">SCI</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">Blockchain for Decentralized Multi-Drone to Combat COVID-19 and Future Pandemics: Framework and Proposed Solutions</div>
+      <div class="pub-authors">Saeed Hamood Alsamhi, Brian Lee, Mohsen Guizani, Neeraj Kumar, Yuansong Qiao, <strong>Xuan Liu</strong></div>
+      <div class="pub-venue">Wiley Transactions on Emerging Telecommunications Technologies, 2021</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Blockchain / UAV</span><span class="ptag tier-sci">SCI</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">An Efficient Privacy-Preserving Identification Centric Authentication in IoT based Cloud Servers for Sustainable Smart Cities</div>
+      <div class="pub-authors">Ajay Kumar, Kumar Abhishek, <strong>Xuan Liu</strong>, Anandakumar Haldorai</div>
+      <div class="pub-venue">Wireless Personal Communications, 117, 2021</div>
+      <div class="pub-tags"><span class="ptag tag-topic">IoT Auth</span><span class="ptag tier-sci">SCI</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">DeepAMD: Detection and Identification of Android Malware Using High-Efficient Deep Artificial Neural Network</div>
+      <div class="pub-authors">Syed Ibrahim Imtiaz, Saif ur Rehman, Abdul Rehman Javed, Zunera Jalil, <strong>Xuan Liu</strong>, Waleed S. Alnumay</div>
+      <div class="pub-venue">Future Generation Computer Systems, 115, 2021</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Malware Detection</span><span class="ptag tier-c">CCF C</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">A Comprehensive Survey of AI-Enabled Phishing Attacks Detection Techniques</div>
+      <div class="pub-authors">Abdul Basit, Maham Zafar, <strong>Xuan Liu</strong>, Abdul Rehman Javed, Zunera Jalil, Kashif Kifayat</div>
+      <div class="pub-venue">Telecommunication Systems, 76(1), 2021</div>
+      <div class="pub-tags"><span class="ptag tag-topic">AI Security</span><span class="ptag tier-sci">SCI</span></div>
+    </div>
+    <div class="pub-year">2020</div>
+    <div class="pub">
+      <div class="pub-title">BPA: The Optimal Placement of Interdependent VNFs in Many-core System</div>
+      <div class="pub-authors">Youbing Zhong, Zhou Zhou, <strong>Xuan Liu</strong>, Da Li, Meijun Guo, Shuai Zhang, Qingyun Liu, Li Guo</div>
+      <div class="pub-venue">EAI CollaborateCom 2020</div>
+      <div class="pub-tags"><span class="ptag tag-topic">VNF</span><span class="ptag tier-c">CCF C</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">Guest Editorial: Recent Advances in Multimedia Security and Information Hiding</div>
+      <div class="pub-authors">Amit Kumar Singh, <strong>Xuan Liu</strong>, Haoxiang Wang, Hoon Ko</div>
+      <div class="pub-venue">Wiley Transactions on Emerging Telecommunications Technologies, 2020</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Editorial</span><span class="ptag tier-ed">Editorial</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">A Survey on Recent Optimal Techniques for Securing UAVs Applications</div>
+      <div class="pub-authors">Farheen Syed, Sachin Kumar Gupta, S. H. Alsamhi, Mamoon Rashid, <strong>Xuan Liu</strong></div>
+      <div class="pub-venue">Wiley Transactions on Emerging Telecommunications Technologies, 2020</div>
+      <div class="pub-tags"><span class="ptag tag-topic">UAV Security</span><span class="ptag tier-sci">SCI</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">Ensemble Adaboost Classifier for Accurate and Fast Detection of Botnet Attacks in Connected Vehicles</div>
+      <div class="pub-authors">Abdul Rehman Javed, Zunera Jalil, Syed Atif Moqurrab, Sidra Abbas, <strong>Xuan Liu</strong></div>
+      <div class="pub-venue">Wiley Transactions on Emerging Telecommunications Technologies, 2020</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Botnet Detection</span><span class="ptag tier-sci">SCI</span></div>
+    </div>
+    <div class="pub-year">2019</div>
+    <div class="pub">
+      <div class="pub-title">Collaborative Dual-Structural Edge Networking Paradigm: An Analysis Study in Terms of Multimedia Content Delivery</div>
+      <div class="pub-authors"><strong>Xuan Liu</strong>, Peng Yang, Yongqiang Dong, Sayed Chhattan Shah</div>
+      <div class="pub-venue">Multimedia Tools and Applications, 78(17), 2019</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Edge Networking</span><span class="ptag tier-c">CCF C</span></div>
+    </div>
+    <div class="pub-year">2018</div>
+    <div class="pub">
+      <div class="pub-title">An Analysis of Content Sharing Hops for Dual-Structural Network Based on General Random Graph</div>
+      <div class="pub-authors"><strong>Xuan Liu</strong>, Peng Yang, Yongqiang Dong, Syed Hassan Ahmed</div>
+      <div class="pub-venue">IEEE GLOBECOM 2018</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Content Sharing</span><span class="ptag tier-c">CCF C</span></div>
+    </div>
+    <div class="pub-year">2017</div>
+    <div class="pub">
+      <div class="pub-title">Information-Centric Mobile Ad Hoc Networks and Content Routing: A Survey</div>
+      <div class="pub-authors"><strong>Xuan Liu</strong>, Zhuo Li, Peng Yang, Yongqiang Dong</div>
+      <div class="pub-venue">Ad Hoc Networks, 58, 2017</div>
+      <div class="pub-tags"><span class="ptag tag-topic">ICN Survey</span><span class="ptag tier-c">CCF C</span></div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">A Comparative Analysis of Content Delivery Capability for Collaborative Dual-Architecture Network</div>
+      <div class="pub-authors"><strong>Xuan Liu</strong>, Peng Yang, Yongqiang Dong, Syed Hassan Ahmed</div>
+      <div class="pub-venue">EAI CollaborateCom 2017</div>
+      <div class="pub-tags"><span class="ptag tag-topic">Content Delivery</span><span class="ptag tier-c">CCF C</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <img class="footer-logo" src="assets/nsos-lab-logo.jpg" alt="NSOS Lab logo" /><br/>
+      <strong style="color:#E2E8F0">NSOS Lab</strong> · Networked Systems Observability &amp; Security<br/>
+      College of Information and Artificial Intelligence, Yangzhou University<br/>
+      Room 2503, Boxue Building, No.196 Huayang West Road, Yangzhou, Jiangsu 225127, China
+    </div>
+    <div>
+      <a href="http://liuxuan.website" target="_blank">PI Website</a> ·
+      <a href="https://github.com/" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
