@@ -504,10 +504,10 @@
 
 <script>
 (function(){
-  fetch('https://get.geojs.io/v1/ip.json')
+  fetch('https://ipwho.is/')
     .then(function(r){return r.json()})
     .then(function(d){
-      var flag=d.country_code?toFlag(d.country_code):'🌐';
+      var flag=(d.flag&&d.flag.emoji)?d.flag.emoji:'';
       var city=d.city||'';
       var country=d.country||'Unknown';
       var region=d.region||'';
@@ -518,9 +518,6 @@
     .catch(function(){
       document.getElementById('geo-location').textContent='Location detection unavailable';
     });
-  function toFlag(cc){
-    return cc.toUpperCase().replace(/./g,function(c){return String.fromCodePoint(127397+c.charCodeAt())});
-  }
 })();
 </script>
 
