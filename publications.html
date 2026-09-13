@@ -43,10 +43,9 @@
   }
   .logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--navy);font-size:18px}
   .logo-mark{
-    width:34px;height:34px;border-radius:8px;
-    background:linear-gradient(135deg,var(--navy),var(--accent));
-    display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:14px;
-    box-shadow:0 4px 12px rgba(10,37,64,.25);
+    width:40px;height:40px;border-radius:9px;object-fit:cover;
+    background:#fff;padding:3px;border:1px solid var(--border);
+    box-shadow:0 2px 8px rgba(10,37,64,.12);
   }
   .nav-links{display:flex;gap:28px;font-size:14px;font-weight:500}
   .nav-links a{color:var(--text-soft)}
@@ -261,13 +260,13 @@
 <nav class="nav">
   <div class="nav-inner">
     <a href="#" class="logo">
-      <span class="logo-mark">NS</span>
+      <img class="logo-mark" src="assets/nsos-lab-logo.jpg" alt="NSOS Lab logo" />
       <span>NSOS Lab</span>
     </a>
     <div class="nav-links">
       <a href="index.html">← Home</a>
       <a href="index.html#research">Research</a>
-      <a href="index.html#team">Team</a>
+      <a href="team.html">Team</a>
       <a href="#publications" style="color:var(--accent)">Publications</a>
       <a href="http://liuxuan.website" target="_blank" rel="noopener">PI →</a>
     </div>
