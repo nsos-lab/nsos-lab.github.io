@@ -6,7 +6,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-<title>Team — NSOS Lab, Yangzhou University</title>
+<title>Life — NSOS Lab, Yangzhou University</title>
 <meta name="description" content="NSOS Lab at Yangzhou University: building observability and security foundations for next-generation networked and autonomous systems" />
 <style>
   :root{
@@ -254,6 +254,20 @@
     .footer-inner{grid-template-columns:1fr;text-align:center}
     .news-item{flex-direction:column;gap:6px}
   }
+
+  /* ===== Life gallery ===== */
+  .masonry{columns:3;column-gap:20px}
+  @media(max-width:900px){.masonry{columns:2}}
+  @media(max-width:560px){.masonry{columns:1}}
+  .card{break-inside:avoid;margin-bottom:20px;background:var(--bg-alt);border:1px solid var(--border);
+        border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(10,37,64,.06);
+        transition:transform .25s,box-shadow .25s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(10,37,64,.12)}
+  .card img{width:100%;display:block}
+  .card figcaption{padding:12px 16px;display:flex;flex-direction:column;gap:6px}
+  .chip{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--accent);
+        background:rgba(255,94,58,.08);border-radius:999px;padding:2px 10px;width:fit-content}
+  .cap{font-size:13px;color:var(--text-soft)}
 </style>
 </head>
 <body>
@@ -266,8 +280,8 @@
     </a>
     <div class="nav-links">
       <a href="index.html#research">Research</a>
-      <a href="team.html" style="color:var(--accent)">Team</a>
-      <a href="life.html">Life</a>
+      <a href="team.html">Team</a>
+      <a href="life.html" style="color:var(--accent)">Life</a>
       <a href="publications.html">Publications</a>
       <a href="#news">News</a>
       <a href="#join">Join Us</a>
@@ -280,136 +294,40 @@
 <header class="hero" style="padding:64px 24px 56px">
   <div class="hero-inner">
     <div class="hero-badge"><span class="dot"></span><span>NSOS Lab · Yangzhou University</span></div>
-    <h1 style="font-size:clamp(30px,4vw,44px)">Team</h1>
-    <p class="tagline" style="margin-bottom:0">PI, Collaborators, and students.</p>
+    <h1 style="font-size:clamp(30px,4vw,44px)">Life at NSOS</h1>
+    <p class="tagline" style="margin-bottom:0">Talks, dinners, competitions, trips, and everyday moments beyond research.</p>
   </div>
 </header>
 
-<!-- ========== TEAM ========== -->
-<section id="team">
-  <div class="section-inner">
-    <div class="section-kicker">Team</div>
-    <p class="section-lead">
-      A small, focused group working at the intersection of systems, security, and LLMs/Agent.
-    </p>
-
-    <div class="team-group">
-      <div class="team-group-title">Principal Investigator</div>
-      <div class="team-grid">
-        <div class="member">
-          <img class="avatar" src="assets/team/xuan-liu.jpg?v=2" alt="Xuan Liu" />
-          <div class="member-info">
-            <div class="member-name">Xuan Liu</div>
-            <div class="member-role">Lecturer &amp; PI · Ph.D. (Southeast Univ.)</div>
-            <div class="member-interest">Observability · Security</div>
-            <div class="member-links">
-              <a href="http://liuxuan.website" target="_blank">Website</a>
-              <a href="https://scholar.google.com/citations?user=N95MHnkAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-              <a href="https://github.com/yusuf1126" target="_blank" rel="noopener">GitHub</a>
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- ========== LIFE GALLERY ========== -->
+<section style="padding:56px 24px 72px">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="masonry">
+      <figure class="card">
+        <img src="assets/life/group-photo.jpg" alt="Group photo in front of the college building" loading="lazy" />
+        <figcaption><span class="chip">📸 Team</span><span class="cap">The group in front of the College of Information and Artificial Intelligence</span></figcaption>
+      </figure>
+      <figure class="card">
+        <img src="assets/life/dinner.jpg" alt="Lab dinner" loading="lazy" />
+        <figcaption><span class="chip">🍜 Dinner</span><span class="cap">Lab dinner at a Yangzhou restaurant</span></figcaption>
+      </figure>
+      <figure class="card">
+        <img src="assets/life/c4-flamesec.jpg" alt="FlameSec team at C4 competition" loading="lazy" />
+        <figcaption><span class="chip">🏆 Competition</span><span class="cap">FlameSec team at the C4 Network Technology Challenge, Wenzhou</span></figcaption>
+      </figure>
+      <figure class="card">
+        <img src="assets/life/defense.jpg" alt="PhD thesis defense" loading="lazy" />
+        <figcaption><span class="chip">🤝 Academic Exchange</span><span class="cap">Academic exchange on sketch-based network measurement, July 2025</span></figcaption>
+      </figure>
+      <figure class="card">
+        <img src="assets/life/talk.jpg" alt="Research talk" loading="lazy" />
+        <figcaption><span class="chip">🎤 Talk</span><span class="cap">Sharing session on research progress</span></figcaption>
+      </figure>
+      <figure class="card">
+        <img src="assets/life/lab-work.jpg" alt="Daily work in the lab" loading="lazy" />
+        <figcaption><span class="chip">💻 Daily</span><span class="cap">Everyday hacking in the lab</span></figcaption>
+      </figure>
     </div>
-
-    <div class="team-group">
-      <div class="team-group-title">Collaborators</div>
-      <div class="team-grid">
-        <div class="member">
-          <img class="avatar" src="assets/team/xiang-chen.jpg?v=1" alt="Xiang Chen" />
-          <div class="member-info">
-            <div class="member-name">Xiang Chen</div>
-            <div class="member-role">Zhejiang University</div>
-            <div class="member-interest">Network Measurement · Network Security · LLMs</div>
-            <div class="member-links">
-              <a href="https://person.zju.edu.cn/en/0026821" target="_blank">Website</a>
-              <a href="https://scholar.google.com/citations?user=ZMdsjDUAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-            </div>
-          </div>
-        </div>
-        <div class="member">
-          <img class="avatar" src="assets/team/dezhang-kong.jpg?v=1" alt="Dezhang Kong" />
-          <div class="member-info">
-            <div class="member-name">Dezhang Kong</div>
-            <div class="member-role">Zhejiang University</div>
-            <div class="member-interest">SDN Security · Agentic System · Network Security</div>
-            <div class="member-links">
-              <a href="https://scholar.google.com/citations?user=DMKe8qYAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-            </div>
-          </div>
-        </div>
-        <div class="member">
-          <img class="avatar" src="assets/team/xiaodong-zang.jpg?v=1" alt="Xiaodong Zang" />
-          <div class="member-info">
-            <div class="member-name">Xiaodong Zang</div>
-            <div class="member-role">Qufu Normal University</div>
-            <div class="member-interest">Network Attack &amp; Defense · Anomaly Detection</div>
-            <div class="member-links">
-              <a href="https://cyber.qfnu.edu.cn/info/1099/2857.htm" target="_blank" rel="noopener">Website</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="team-group">
-      <div class="team-group-title">PhD Students</div>
-      <div class="team-grid">
-        <div class="member">
-          <div class="avatar">FH</div>
-          <div class="member-info">
-            <div class="member-name">Fangbo Hou</div>
-            <div class="member-role">PhD Student</div>
-            <div class="member-interest">eBPF-based Defense for AI Agents</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="team-group">
-      <div class="team-group-title">Master Students</div>
-      <div class="team-grid">
-        <div class="member">
-          <div class="avatar">HY</div>
-          <div class="member-info">
-            <div class="member-name">Haoran Yin</div>
-            <div class="member-role">Master Student</div>
-            <div class="member-interest">Attack Propagation in Multi-Agent Systems</div>
-          </div>
-        </div>
-        <div class="member">
-          <div class="avatar">SC</div>
-          <div class="member-info">
-            <div class="member-name">Shengyu Chu</div>
-            <div class="member-role">Master Student</div>
-            <div class="member-interest">Loop Attack Detection for Web Agents</div>
-          </div>
-        </div>
-        <div class="member">
-          <div class="avatar">ZL</div>
-          <div class="member-info">
-            <div class="member-name">Zhenghong Liu</div>
-            <div class="member-role">Master Student</div>
-            <div class="member-interest">Skill-Level DoS Attack Detection</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="team-group">
-      <div class="team-group-title">Undergraduate Students</div>
-      <div class="team-grid">
-        <div class="member">
-          <div class="avatar">ZT</div>
-          <div class="member-info">
-            <div class="member-name">Zhicheng Tan</div>
-            <div class="member-role">Undergraduate Student</div>
-            <div class="member-interest">DoS Attack Detection for AI Agents</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
