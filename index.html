@@ -468,10 +468,22 @@
 <section id="stats" style="padding:40px 24px;background:linear-gradient(180deg,#0A2540 0%,#0D1B2A 100%);border-top:1px solid rgba(255,255,255,.06)">
   <div style="max-width:820px;margin:0 auto;text-align:center">
     <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#64748B;margin-bottom:20px;font-weight:600">Site Statistics</div>
-    <div style="display:flex;justify-content:center;align-items:center;gap:48px;flex-wrap:wrap">
+    <div style="display:flex;justify-content:center;align-items:center;gap:48px;flex-wrap:wrap;margin-bottom:28px">
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
         <img src="https://hits.sh/nsos-lab.github.io.svg?label=visits&color=4ECDC4&labelColor=1A6B5A" alt="Total Visits" style="height:28px"/>
         <div style="font-size:13px;color:#94A3B8;letter-spacing:.04em">Total Page Views</div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.06);padding-top:20px">
+      <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#64748B;margin-bottom:14px;font-weight:600">🌍 Visitor Geography</div>
+      <div id="visitor-geo" style="display:flex;justify-content:center;align-items:center;gap:24px;flex-wrap:wrap;font-size:14px;color:#94A3B8">
+        <span style="display:inline-flex;align-items:center;gap:6px">
+          <span id="geo-flag" style="font-size:20px"></span>
+          <span id="geo-location">Detecting your location…</span>
+        </span>
+      </div>
+      <div style="margin-top:16px">
+        <a href="https://nsos-lab.goatcounter.com/" target="_blank" rel="noopener" style="font-size:12px;color:#64B5F6;text-decoration:none;letter-spacing:.04em;border-bottom:1px dashed rgba(100,181,246,.4);padding-bottom:2px;transition:all .2s">View full analytics →</a>
       </div>
     </div>
   </div>
@@ -487,6 +499,25 @@
 })();
 </script>
 
+
+<script>
+(function(){
+  fetch('https://ipwho.is/')
+    .then(function(r){return r.json()})
+    .then(function(d){
+      var flag=(d.flag&&d.flag.emoji)?d.flag.emoji:'';
+      var city=d.city||'';
+      var country=d.country||'Unknown';
+      var region=d.region||'';
+      var loc=city?(city+', '+region+', '+country):(region?region+', '+country:country);
+      document.getElementById('geo-flag').textContent=flag;
+      document.getElementById('geo-location').innerHTML='You are visiting from <strong style="color:#E2E8F0">'+loc+'</strong>';
+    })
+    .catch(function(){
+      document.getElementById('geo-location').textContent='Location detection unavailable';
+    });
+})();
+</script>
 
 <!-- ========== FOOTER ========== -->
 <footer>
