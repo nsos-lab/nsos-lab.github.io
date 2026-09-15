@@ -123,6 +123,38 @@
   }
   .section-lead{color:var(--text-soft);max-width:720px;margin-bottom:44px;font-size:17px}
 
+
+  /* ===== Open problem cards ===== */
+  .qcard{
+    background:var(--bg-alt);border:1px solid var(--border);
+    border-left:4px solid var(--accent);border-radius:16px;
+    padding:30px 32px;margin-top:24px;
+    box-shadow:0 2px 12px rgba(10,37,64,.06);
+  }
+  .qhead{display:flex;gap:20px;align-items:flex-start}
+  .qnum{
+    flex-shrink:0;font-size:32px;font-weight:800;line-height:1;
+    color:var(--accent);letter-spacing:-.02em;padding-top:2px;
+  }
+  .qcard h3{
+    font-size:clamp(18px,2vw,22px);color:var(--navy);
+    line-height:1.32;font-weight:700;
+  }
+  .qmeta{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+  .qtag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:999px;background:#F1F5F9;color:var(--navy-2)}
+  .qbody{margin-top:20px;max-width:860px}
+  .qbody h4{
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:8px;font-weight:700;
+  }
+  .qbody p{font-size:14.5px;color:var(--text-soft)}
+  .qsubhead{
+    margin-top:44px;font-size:13px;font-weight:700;letter-spacing:.14em;
+    color:var(--accent);text-transform:uppercase;
+  }
+  .more-link{display:inline-block;margin-top:28px;font-size:14.5px;font-weight:600;color:var(--navy)}
+  .more-link:hover{color:var(--accent)}
+
   /* ===== Research ===== */
   .research-grid{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;
@@ -311,6 +343,50 @@
     <p class="section-lead">
       Our work spans the full stack of modern networked systems — from kernel-level observability primitives to the safety of the autonomous agents running on top.
     </p>
+
+    <div class="qcard">
+      <div class="qhead">
+        <div class="qnum">Q1</div>
+        <div>
+          <h3>How severe is the Agent DoS caused by indirect prompt injection, really?</h3>
+          <div class="qmeta">
+            <span class="qtag">Indirect Prompt Injection</span>
+            <span class="qtag">Agent DoS</span>
+            <span class="qtag">Black-box Detection</span>
+            <span class="qtag">Large-scale Measurement</span>
+          </div>
+        </div>
+      </div>
+      <div class="qbody">
+        <div>
+          <h4>Why it matters</h4>
+          <p>LLM agents browse and act on the open web autonomously. Indirect prompt injection lets an ordinary-looking page plant instructions that hijack an agent's control flow — for example, trapping it in execution loops that burn its step, time, and token budgets. This is denial of service at the agent layer: real cost in tokens and compute, tasks that silently fail, and so far no systematic measurement of how bad it can get.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <div class="qhead">
+        <div class="qnum">Q2</div>
+        <div>
+          <h3>Can eBPF genuinely improve the security and observability of AI agents?</h3>
+          <div class="qmeta">
+            <span class="qtag">eBPF</span>
+            <span class="qtag">Agent Observability</span>
+            <span class="qtag">Runtime Enforcement</span>
+            <span class="qtag">Kernel-level Telemetry</span>
+          </div>
+        </div>
+      </div>
+      <div class="qbody">
+        <div>
+          <h4>Why it matters</h4>
+          <p>Today's agent guardrails live in the same layer the attacker manipulates — prompts, framework hooks, application logic. But an agent that reasons its way past application-level checks still cannot hide its syscalls, file accesses, and network egress. Kernel-level visibility through eBPF is tamper-resistant, low-overhead, and agent-agnostic — a fundamentally different place to observe and to enforce.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="qsubhead">Research Themes</div>
     <div class="research-grid">
 
       <div class="rcard">
@@ -347,6 +423,7 @@
       </div>
 
     </div>
+    <a class="more-link" href="research.html">→ Full research page: problems we are solving</a>
   </div>
 </section>
 
