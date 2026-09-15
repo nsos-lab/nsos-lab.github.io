@@ -357,12 +357,6 @@
           </div>
         </div>
       </div>
-      <div class="qbody">
-        <div>
-          <h4>Why it matters</h4>
-          <p>LLM agents browse and act on the open web autonomously. Indirect prompt injection lets an ordinary-looking page plant instructions that hijack an agent's control flow — for example, trapping it in execution loops that burn its step, time, and token budgets. This is denial of service at the agent layer: real cost in tokens and compute, tasks that silently fail, and so far no systematic measurement of how bad it can get.</p>
-        </div>
-      </div>
     </div>
 
     <div class="qcard">
@@ -376,12 +370,6 @@
             <span class="qtag">Runtime Enforcement</span>
             <span class="qtag">Kernel-level Telemetry</span>
           </div>
-        </div>
-      </div>
-      <div class="qbody">
-        <div>
-          <h4>Why it matters</h4>
-          <p>Today's agent guardrails live in the same layer the attacker manipulates — prompts, framework hooks, application logic. But an agent that reasons its way past application-level checks still cannot hide its syscalls, file accesses, and network egress. Kernel-level visibility through eBPF is tamper-resistant, low-overhead, and agent-agnostic — a fundamentally different place to observe and to enforce.</p>
         </div>
       </div>
     </div>
