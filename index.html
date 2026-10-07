@@ -87,7 +87,10 @@
     background-size:44px 44px;
     mask-image:radial-gradient(ellipse at 50% 30%,black 40%,transparent 80%);
   }
-  .hero-inner{max-width:1100px;margin:0 auto;position:relative}
+  .hero-inner{
+    max-width:1180px;margin:0 auto;position:relative;z-index:2;
+    display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center;
+  }
   .hero-badge{
     display:inline-flex;align-items:center;gap:8px;
     padding:6px 14px;border-radius:999px;
@@ -308,12 +311,20 @@
   /* ===== VISUAL ENHANCEMENT LAYER (content unchanged) ===== */
   /* ===================================================== */
 
-  /* --- Hero particle canvas --- */
-  #hero-net{
-    position:absolute;inset:0;width:100%;height:100%;
-    z-index:0;pointer-events:none;
+  /* --- Hero 3D globe stage (narrowed) --- */
+  .globe-stage{
+    position:relative;width:100%;max-width:420px;justify-self:center;
+    aspect-ratio:1/1;z-index:2;
   }
-  .hero-inner{z-index:1}
+  #globe-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .globe-caption{
+    position:absolute;left:0;right:0;bottom:-8px;text-align:center;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#94A3B8;
+  }
+  @media(max-width:900px){
+    .hero-inner{grid-template-columns:1fr;gap:36px}
+    .globe-stage{max-width:300px;order:-1}
+  }
 
   /* --- Animated glowing orbs in hero --- */
   .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;pointer-events:none;z-index:0}
@@ -431,10 +442,10 @@
 
 <!-- ========== HERO ========== -->
 <header class="hero">
-  <canvas id="hero-net"></canvas>
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="hero-inner">
+   <div class="hero-copy">
     <div class="hero-badge">
       <span class="dot"></span>
       <span>Networked Systems Observability & Security Lab · Yangzhou University · China</span>
@@ -457,6 +468,11 @@
       <a href="#research" class="btn btn-primary">Explore Our Research →</a>
       <a href="#join" class="btn btn-ghost">Join the Lab</a>
     </div>
+   </div>
+   <div class="globe-stage">
+     <canvas id="globe-canvas"></canvas>
+     <div class="globe-caption">Networked Systems · Live</div>
+   </div>
   </div>
 </header>
 
@@ -744,69 +760,171 @@
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- 1. Animated neural-network particle canvas ---------- */
-  var canvas = document.getElementById('hero-net');
-  if(canvas && !reduce){
+  /* ---------- 1. 3D rotating network globe ---------- */
+  var canvas = document.getElementById('globe-canvas');
+  if(canvas){
     var ctx = canvas.getContext('2d');
-    var W,H,particles=[],mouse={x:-9999,y:-9999};
-    var COLORS=['255,94,58','78,205,196','100,181,246'];
-    var DIST=130;
+    var W=0,H=0,DPR=1;
+
+    var N=260, pts=[];
+    (function(){
+      var k=Math.PI*(3-Math.sqrt(5));
+      for(var i=0;i<N;i++){
+        var y=1-(i/(N-1))*2;
+        var rad=Math.sqrt(1-y*y);
+        var theta=k*i;
+        pts.push({x:Math.cos(theta)*rad,y:y,z:Math.sin(theta)*rad,hub:(i%23===0)});
+      }
+    })();
+
+    var arcs=[];
+    (function(){
+      for(var a=0;a<14;a++){
+        var i=Math.floor(Math.random()*N),j=Math.floor(Math.random()*N);
+        while(j===i)j=Math.floor(Math.random()*N);
+        arcs.push({a:i,b:j});
+      }
+    })();
+
+    var sats=[];
+    for(var s=0;s<4;s++){
+      sats.push({ang:Math.random()*Math.PI*2,tilt:(Math.random()-.5)*.9,sp:.002+Math.random()*.0025,rr:1.35+Math.random()*.2});
+    }
+
+    var rotY=0,rotX=.32,targetRX=.32,mx=0,my=0,velY=.0035;
+    var stage=canvas.parentElement;
+    stage.addEventListener('mousemove',function(e){
+      var r=stage.getBoundingClientRect();
+      mx=(e.clientX-r.left)/r.width-.5;
+      my=(e.clientY-r.top)/r.height-.5;
+    });
+    stage.addEventListener('mouseleave',function(){mx=0;my=0});
 
     function resize(){
-      var r=canvas.parentElement.getBoundingClientRect();
-      W=canvas.width=r.width;
-      H=canvas.height=r.height;
-      var count=Math.min(90,Math.floor(W*H/16000));
-      particles=[];
-      for(var i=0;i<count;i++){
-        particles.push({
-          x:Math.random()*W, y:Math.random()*H,
-          vx:(Math.random()-.5)*.45, vy:(Math.random()-.5)*.45,
-          r:Math.random()*1.8+.8, c:COLORS[Math.floor(Math.random()*COLORS.length)]
-        });
-      }
+      var r=stage.getBoundingClientRect();
+      DPR=Math.min(window.devicePixelRatio||1,2);
+      W=r.width;H=r.height;
+      canvas.width=W*DPR;canvas.height=H*DPR;
+      ctx.setTransform(DPR,0,0,DPR,0,0);
     }
-    function draw(){
+    function rot(p,ay,ax){
+      var cy=Math.cos(ay),sy=Math.sin(ay);
+      var x1=p.x*cy+p.z*sy;
+      var z1=-p.x*sy+p.z*cy;
+      var y1=p.y;
+      var cx=Math.cos(ax),sx=Math.sin(ax);
+      var y2=y1*cx-z1*sx;
+      var z2=y1*sx+z1*cx;
+      return {x:x1,y:y2,z:z2};
+    }
+    var focal=3.2;
+    function project(v){
+      var scale=focal/(focal-v.z);
+      var radius=Math.min(W,H)*0.36;
+      return {x:W/2+v.x*radius*scale,y:H/2+v.y*radius*scale,s:scale,z:v.z};
+    }
+
+    var t0=performance.now();
+    function frame(now){
+      var time=now-t0;
       ctx.clearRect(0,0,W,H);
-      for(var i=0;i<particles.length;i++){
-        var p=particles[i];
-        p.x+=p.vx; p.y+=p.vy;
-        if(p.x<0||p.x>W)p.vx*=-1;
-        if(p.y<0||p.y>H)p.vy*=-1;
 
-        var dxm=p.x-mouse.x, dym=p.y-mouse.y;
-        var dm=Math.sqrt(dxm*dxm+dym*dym);
-        if(dm<140){ p.x+=dxm/dm*.6; p.y+=dym/dm*.6; }
-
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fillStyle='rgba('+p.c+',.7)';
-        ctx.fill();
-
-        for(var j=i+1;j<particles.length;j++){
-          var q=particles[j];
-          var dx=p.x-q.x, dy=p.y-q.y;
-          var d=Math.sqrt(dx*dx+dy*dy);
-          if(d<DIST){
-            ctx.beginPath();
-            ctx.moveTo(p.x,p.y);
-            ctx.lineTo(q.x,q.y);
-            ctx.strokeStyle='rgba('+p.c+','+(.18*(1-d/DIST))+')';
-            ctx.lineWidth=.7;
-            ctx.stroke();
-          }
-        }
+      if(!reduce){
+        targetRX=.32+my*0.7;
+        rotY+=velY+mx*0.012;
+        rotX+=(targetRX-rotX)*0.05;
       }
-      requestAnimationFrame(draw);
+      var ay=rotY,ax=rotX;
+
+      var cxp=W/2,cyp=H/2,rr=Math.min(W,H)*0.36;
+      var g=ctx.createRadialGradient(cxp,cyp,rr*.15,cxp,cyp,rr*1.25);
+      g.addColorStop(0,'rgba(78,205,196,0.28)');
+      g.addColorStop(.5,'rgba(78,205,196,0.12)');
+      g.addColorStop(.75,'rgba(255,94,58,0.12)');
+      g.addColorStop(1,'rgba(10,37,64,0)');
+      ctx.fillStyle=g;
+      ctx.beginPath();ctx.arc(cxp,cyp,rr*1.25,0,Math.PI*2);ctx.fill();
+
+      var sg=ctx.createRadialGradient(cxp-rr*.35,cyp-rr*.35,rr*.1,cxp,cyp,rr);
+      sg.addColorStop(0,'rgba(30,64,98,0.55)');
+      sg.addColorStop(.7,'rgba(16,36,59,0.62)');
+      sg.addColorStop(1,'rgba(10,27,42,0.35)');
+      ctx.fillStyle=sg;
+      ctx.beginPath();ctx.arc(cxp,cyp,rr,0,Math.PI*2);ctx.fill();
+
+      var proj=[];
+      for(var i=0;i<pts.length;i++){
+        var rv=rot(pts[i],ay,ax);
+        proj.push({p:project(rv),z:rv.z,hub:pts[i].hub});
+      }
+
+      arcs.forEach(function(arc){
+        var A=pts[arc.a],B=pts[arc.b];
+        var mid={x:(A.x+B.x)/2,y:(A.y+B.y)/2,z:(A.z+B.z)/2};
+        var ml=Math.hypot(mid.x,mid.y,mid.z)||1;
+        mid={x:mid.x/ml*1.05,y:mid.y/ml*1.05,z:mid.z/ml*1.05};
+        var pA=project(rot(A,ay,ax)),pM=project(rot(mid,ay,ax)),pB=project(rot(B,ay,ax));
+        var depth=(pA.z+pB.z)/2;
+        var alpha=.12+.5*Math.max(0,(depth+1)/2);
+        ctx.beginPath();
+        ctx.moveTo(pA.x,pA.y);
+        ctx.quadraticCurveTo(pM.x,pM.y,pB.x,pB.y);
+        ctx.strokeStyle='rgba(94,215,206,'+alpha.toFixed(3)+')';
+        ctx.lineWidth=1.1;
+        ctx.stroke();
+      });
+
+      var order=proj.map(function(_,i){return i});
+      order.sort(function(a,b){return proj[a].z-proj[b].z});
+      order.forEach(function(idx){
+        var q=proj[idx];
+        var front=(q.z+1)/2;
+        var size=(.9+front*2.1)*q.s;
+        if(q.hub){
+          var pulse=.6+.4*Math.sin(time*.004+idx);
+          ctx.beginPath();
+          ctx.arc(q.x,q.y,size*3.6*pulse,0,Math.PI*2);
+          ctx.fillStyle='rgba(255,94,58,'+(0.22*front+0.05).toFixed(3)+')';
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(q.x,q.y,size*1.7,0,Math.PI*2);
+          ctx.fillStyle='rgba(255,104,68,'+(0.6+0.4*front).toFixed(3)+')';
+          ctx.fill();
+        } else {
+          ctx.beginPath();
+          ctx.arc(q.x,q.y,size,0,Math.PI*2);
+          var mix=front;
+          var rC=Math.round(94+(255-94)*mix*.55);
+          var gC=Math.round(215-(215-104)*mix*.6);
+          var bC=Math.round(206-(206-68)*mix*.5);
+          ctx.fillStyle='rgba('+rC+','+gC+','+bC+','+(0.4+0.6*front).toFixed(3)+')';
+          ctx.fill();
+        }
+      });
+
+      sats.forEach(function(sat){
+        if(!reduce)sat.ang+=sat.sp;
+        var local={x:Math.cos(sat.ang)*sat.rr,y:sat.tilt*sat.rr,z:Math.sin(sat.ang)*sat.rr};
+        var pr=project(rot(local,ay,ax));
+        var front=(pr.z+1)/2;
+        ctx.beginPath();
+        for(var k=1;k<=8;k++){
+          var back={x:Math.cos(sat.ang-k*.06)*sat.rr,y:sat.tilt*sat.rr,z:Math.sin(sat.ang-k*.06)*sat.rr};
+          var pb=project(rot(back,ay,ax));
+          if(k===1)ctx.moveTo(pb.x,pb.y);else ctx.lineTo(pb.x,pb.y);
+        }
+        ctx.strokeStyle='rgba(120,192,250,'+(0.1+0.3*front)+')';
+        ctx.lineWidth=1.1;ctx.stroke();
+        ctx.beginPath();ctx.arc(pr.x,pr.y,2.5,0,Math.PI*2);
+        ctx.fillStyle='rgba(120,192,250,'+(0.6+0.4*front)+')';ctx.fill();
+      });
+
+      requestAnimationFrame(frame);
     }
-    var hero=document.querySelector('.hero');
-    hero.addEventListener('mousemove',function(e){
-      var r=canvas.getBoundingClientRect();
-      mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top;
-    });
-    hero.addEventListener('mouseleave',function(){mouse.x=-9999;mouse.y=-9999;});
+
     window.addEventListener('resize',resize);
-    resize(); draw();
+    resize();
+    requestAnimationFrame(frame);
   }
 
   /* ---------- 2. Scroll reveal ---------- */
