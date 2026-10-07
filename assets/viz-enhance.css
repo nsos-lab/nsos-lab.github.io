@@ -1,0 +1,83 @@
+/* ============================================================
+   NSOS Lab — Shared Visual Enhancement Layer
+   Pure presentational. Never changes content or logo.
+   Loaded by all subpages (team / publications / research / daily).
+   ============================================================ */
+
+:root{
+  --viz-accent:#FF5E3A;
+  --viz-teal:#4ECDC4;
+  --viz-navy:#0A2540;
+}
+
+/* ---------- Hero: subtle animated glow orbs ---------- */
+.hero{position:relative;overflow:hidden}
+.hero-inner{position:relative;z-index:2}
+.viz-orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.45;pointer-events:none;z-index:1}
+.viz-orb-1{width:380px;height:380px;background:radial-gradient(circle,rgba(255,94,58,.5),transparent 70%);top:-120px;right:-80px;animation:vizFloat1 14s ease-in-out infinite}
+.viz-orb-2{width:340px;height:340px;background:radial-gradient(circle,rgba(78,205,196,.38),transparent 70%);bottom:-130px;left:-90px;animation:vizFloat2 18s ease-in-out infinite}
+@keyframes vizFloat1{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,40px)}}
+@keyframes vizFloat2{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,-30px)}}
+
+/* ---------- Hero title gradient shimmer ---------- */
+.hero h1{position:relative;z-index:2}
+.hero h1 .accent{
+  background:linear-gradient(90deg,var(--viz-teal),var(--viz-accent),var(--viz-teal));
+  background-size:200% auto;-webkit-background-clip:text;background-clip:text;
+  color:transparent;animation:vizShine 5s linear infinite;
+}
+@keyframes vizShine{to{background-position:200% center}}
+
+/* ---------- Card 3D + lift base ---------- */
+.member,.pub,.qcard,.card,.phil,.tcard{
+  transform-style:preserve-3d;will-change:transform;
+  transition:transform .25s ease,box-shadow .3s,border-color .3s;
+}
+.member:hover,.pub:hover,.qcard:hover,.card:hover,.phil:hover,.tcard:hover{
+  box-shadow:0 20px 44px rgba(10,37,64,.14);
+}
+
+/* Glow sweep for white/elevated cards */
+.card.sweep,.phil.sweep,.member.sweep,.tcard.sweep{position:relative;overflow:hidden}
+.card.sweep::after,.phil.sweep::after,.member.sweep::after,.tcard.sweep::after{
+  content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.65),transparent);
+  transform:skewX(-20deg);transition:left .7s ease;pointer-events:none;
+}
+.card.sweep:hover::after,.phil.sweep:hover::after,.member.sweep:hover::after,.tcard.sweep:hover::after{left:130%}
+
+/* ---------- Scroll reveal ---------- */
+.viz-reveal{opacity:0;transform:translateY(34px);
+  transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.viz-reveal.viz-visible{opacity:1;transform:translateY(0)}
+
+/* ---------- Nav scroll glow ---------- */
+.nav.scrolled{box-shadow:0 8px 30px rgba(10,37,64,.1)}
+
+/* ---------- Buttons ---------- */
+.btn-primary,.btn{position:relative;overflow:hidden}
+.btn-primary::before{
+  content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);
+  transform:skewX(-20deg);animation:vizBtn 3.5s ease-in-out infinite}
+@keyframes vizBtn{0%,60%,100%{left:-80%}30%{left:140%}}
+
+/* ---------- Join grid backdrop ---------- */
+.join{position:relative;overflow:hidden}
+.join::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:40px 40px;
+  -webkit-mask-image:radial-gradient(ellipse at center,black,transparent 75%);
+  mask-image:radial-gradient(ellipse at center,black,transparent 75%);
+  pointer-events:none}
+.join-inner{position:relative;z-index:1}
+
+/* ---------- Back to top ---------- */
+#back-to-top:hover{box-shadow:0 6px 24px rgba(255,94,58,.4)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .viz-reveal{opacity:1;transform:none}
+}
