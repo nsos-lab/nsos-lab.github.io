@@ -210,6 +210,27 @@
     color:var(--text-soft);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--border);
   }
   .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+  /* PI layout: card + stats */
+  .pi-layout{display:grid;grid-template-columns:340px 1fr;gap:32px;align-items:stretch}
+  @media(max-width:800px){.pi-layout{grid-template-columns:1fr}}
+  .stats-panel{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-content:center}
+  .stat-card{
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+    border-radius:14px;padding:24px 20px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;transition:all .3s ease;position:relative;overflow:hidden;
+  }
+  .stat-card:hover{border-color:var(--accent-2);transform:translateY(-3px);box-shadow:0 8px 24px rgba(78,205,196,.12)}
+  .stat-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--accent-2),transparent);
+    opacity:0;transition:opacity .3s;
+  }
+  .stat-card:hover::before{opacity:1}
+  .stat-icon{font-size:24px;margin-bottom:8px}
+  .stat-number{font-size:32px;font-weight:800;background:linear-gradient(135deg,var(--accent-2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
+  .stat-label{font-size:12px;color:var(--text-soft);margin-top:6px;letter-spacing:.05em;text-transform:uppercase}
+  .stat-sub{font-size:11px;color:rgba(148,163,184,.7);margin-top:3px}
   .member{
     background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;
     display:flex;flex-direction:column;align-items:flex-start;gap:10px;
@@ -565,9 +586,9 @@
 
     <div class="team-group">
       <div class="team-group-title">Principal Investigator</div>
-      <div class="team-grid">
+      <div class="pi-layout">
         <div class="member">
-          <img class="avatar" src="assets/team/xuan-liu.jpg?v=2" alt="Xuan Liu" />
+          <img class="avatar" src="assets/team/xuan-liu.jpg?v=3" alt="Xuan Liu" />
           <div class="member-info">
             <div class="member-name">Xuan Liu</div>
             <div class="member-role">Lecturer · Graduate Advisor · Ph.D. (Southeast Univ.)</div>
@@ -578,6 +599,32 @@
               <a href="https://scholar.google.com/citations?user=N95MHnkAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
               <a href="https://github.com/yusuf1126" target="_blank" rel="noopener">GitHub</a>
             </div>
+          </div>
+        </div>
+        <div class="stats-panel">
+          <div class="stat-card">
+            <div class="stat-icon">📄</div>
+            <div class="stat-number">65+</div>
+            <div class="stat-label">Publications</div>
+            <div class="stat-sub">CCF-A venues incl.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🔬</div>
+            <div class="stat-number">3</div>
+            <div class="stat-label">Research Lines</div>
+            <div class="stat-sub">NetSec · Observability · Agent</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <div class="stat-number">7</div>
+            <div class="stat-label">PC Member</div>
+            <div class="stat-sub">Top-tier conferences</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🏅</div>
+            <div class="stat-number">9</div>
+            <div class="stat-label">Editorial Boards</div>
+            <div class="stat-sub">IEEE TDSC & more</div>
           </div>
         </div>
       </div>
