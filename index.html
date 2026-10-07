@@ -746,6 +746,28 @@
   </div>
 </section>
 
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="footer-inner">
+    <div style="display:flex;align-items:center;gap:16px">
+      <img src="assets/nsos-lab-logo-shield-footer.svg" alt="NSOS Lab" style="height:64px;width:auto;display:block;flex-shrink:0" />
+      <div>
+        <strong style="color:#E2E8F0">Networked Systems Observability &amp; Security Lab</strong><br/>
+        College of Information and Artificial Intelligence, Yangzhou University<br/>
+        Room 2503, Boxue Building, No.196 Huayang West Road, Yangzhou, Jiangsu 225127, China
+      </div>
+    </div>
+    <div>
+      <a href="http://liuxuan.website" target="_blank">PI Website</a> ·
+      <a href="https://github.com/nsos-lab" target="_blank">GitHub</a>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:24px auto 0">
+    <iframe title="NSOS Lab location" src="https://www.openstreetmap.org/export/embed.html?bbox=119.3830%2C32.3389%2C119.3990%2C32.3469&layer=mapnik&marker=32.3429%2C119.3910" style="width:100%;height:220px;border:1px solid rgba(255,255,255,.08);border-radius:12px;display:block" loading="lazy"></iframe>
+    <div style="margin-top:8px;font-size:12px;color:#64748B">Map data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" style="color:#64B5F6;text-decoration:none">OpenStreetMap contributors</a> &middot; <a href="https://www.openstreetmap.org/?mlat=32.3429&mlon=119.3910#map=16/32.3429/119.3910" target="_blank" rel="noopener" style="color:#64B5F6;text-decoration:none">View larger map &rarr;</a></div>
+  </div>
+</footer>
+
 <button id="back-to-top" aria-label="Back to top" style="position:fixed;right:28px;bottom:28px;z-index:99;width:44px;height:44px;border-radius:50%;border:1px solid #E4E9F0;background:#FFFFFF;color:#FF5E3A;font-size:18px;display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;box-shadow:0 4px 16px rgba(10,37,64,.18)">&uarr;</button>
 <script>
 (function(){
@@ -1041,6 +1063,17 @@
 
   window.addEventListener('resize',resize);resize();
   requestAnimationFrame(frame);
+})();
+</script>
+<script>
+(function(){
+  var b=document.getElementById('back-to-top');
+  window.addEventListener('scroll',function(){
+    var on=window.scrollY>400;
+    b.style.opacity=on?'1':'0';
+    b.style.pointerEvents=on?'auto':'none';
+  },{passive:true});
+  b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
 })();
 </script>
 </body>
