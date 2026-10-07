@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>PI Section Preview — Quick Stats</title>
+<style>
+  :root{
+    --navy:#0A2540; --navy-2:#0D1B2A;
+    --accent:#FF5E3A; --accent-2:#4ECDC4;
+    --text-soft:#94A3B8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;background:var(--navy-2);color:#E2E8F0}
+
+  /* Simulate page background */
+  section{background:#0D1B2A;padding:80px 24px}
+  .section-inner{max-width:1180px;margin:0 auto}
+  .section-kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-2);margin-bottom:8px}
+  .section-lead{font-size:18px;color:#CBD5E1;margin-bottom:32px}
+
+  /* PI layout: left card + right stats */
+  .pi-layout{display:grid;grid-template-columns:340px 1fr;gap:32px;align-items:stretch}
+  @media(max-width:800px){.pi-layout{grid-template-columns:1fr}}
+
+  /* Left: PI card */
+  .member{
+    display:flex;flex-direction:column;align-items:center;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+    border-radius:16px;padding:28px 20px;text-align:center;
+  }
+  .avatar{width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid rgba(78,205,196,.4);margin-bottom:14px}
+  .member-info{flex:1;min-width:0}
+  .member-name{font-weight:700;color:#fff;font-size:17px}
+  .member-role{font-size:13px;color:var(--text-soft);margin-top:2px;line-height:1.5}
+  .member-interest{font-size:12px;color:var(--accent-2);margin-top:8px}
+  .member-links{display:flex;gap:10px;margin-top:12px;justify-content:center;flex-wrap:wrap}
+  .member-links a{font-size:12px;color:var(--text-soft);text-decoration:none;padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.12);transition:all .2s}
+  .member-links a:hover{color:var(--accent-2);border-color:var(--accent-2)}
+
+  /* Right: Quick Stats */
+  .stats-panel{
+    display:grid;grid-template-columns:1fr 1fr;gap:16px;align-content:center;
+  }
+  .stat-card{
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+    border-radius:14px;padding:24px 20px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;transition:all .3s ease;position:relative;overflow:hidden;
+  }
+  .stat-card:hover{border-color:var(--accent-2);transform:translateY(-3px);box-shadow:0 8px 24px rgba(78,205,196,.12)}
+  .stat-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--accent-2),transparent);
+    opacity:0;transition:opacity .3s;
+  }
+  .stat-card:hover::before{opacity:1}
+  .stat-icon{font-size:24px;margin-bottom:8px}
+  .stat-number{font-size:32px;font-weight:800;background:linear-gradient(135deg,var(--accent-2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
+  .stat-label{font-size:12px;color:var(--text-soft);margin-top:6px;letter-spacing:.05em;text-transform:uppercase}
+  .stat-sub{font-size:11px;color:rgba(148,163,184,.7);margin-top:3px}
+
+  /* Bottom button area */
+  .team-actions{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:8px;font-weight:600;font-size:15px;text-decoration:none}
+  .btn-primary{background:var(--navy);color:#E2E8F0;box-shadow:0 6px 18px rgba(10,37,64,.25);border:1px solid rgba(255,255,255,.15)}
+  .btn-ghost{background:rgba(255,255,255,.06);color:#E2E8F0;border:1px solid rgba(255,255,255,.18)}
+</style>
+</head>
+<body>
+
+<section id="team">
+  <div class="section-inner">
+    <div class="section-kicker">Team</div>
+    <p class="section-lead">
+      A small, focused group working at the intersection of systems, security, and LLMs/Agent.
+    </p>
+
+    <div class="pi-layout">
+      <!-- Left: PI Card -->
+      <div class="member">
+        <img class="avatar" src="assets/team/xuan-liu.jpg?v=3" alt="Xuan Liu" />
+        <div class="member-info">
+          <div class="member-name">Xuan Liu</div>
+          <div class="member-role">Lecturer · Graduate Advisor · Ph.D. (Southeast Univ.)</div>
+          <div class="member-role">Yangzhou University, China</div>
+          <div class="member-interest">Observability · Security</div>
+          <div class="member-links">
+            <a href="http://liuxuan.website" target="_blank" rel="noopener">Website</a>
+            <a href="https://scholar.google.com/citations?user=N95MHnkAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+            <a href="https://github.com/yusuf1126" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Quick Stats -->
+      <div class="stats-panel">
+        <div class="stat-card">
+          <div class="stat-icon">📄</div>
+          <div class="stat-number">65+</div>
+          <div class="stat-label">Publications</div>
+          <div class="stat-sub">CCF-A venues incl.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🔬</div>
+          <div class="stat-number">3</div>
+          <div class="stat-label">Research Lines</div>
+          <div class="stat-sub">NetSec · Observability · Agent</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-number">7</div>
+          <div class="stat-label">Grad Students</div>
+          <div class="stat-sub">Active members</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🏅</div>
+          <div class="stat-number">9</div>
+          <div class="stat-label">Editorial Boards</div>
+          <div class="stat-sub">IEEE TDSC & more</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-actions">
+      <a class="btn btn-primary" href="team.html">View full team &amp; openings →</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
