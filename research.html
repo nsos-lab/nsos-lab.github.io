@@ -82,6 +82,7 @@
     background-size:44px 44px;
     mask-image:radial-gradient(ellipse at 50% 30%,black 40%,transparent 80%);
   }
+  #hero-net{position:absolute;inset:0;width:100%;height:100%;display:block}
   .hero-inner{max-width:1100px;margin:0 auto;position:relative}
   .hero-badge{
     display:inline-flex;align-items:center;gap:8px;
@@ -208,6 +209,7 @@
 
 <!-- ========== HERO ========== -->
 <header class="hero" style="padding:72px 24px 64px">
+  <canvas id="hero-net"></canvas>
   <div class="hero-inner">
     <div class="hero-badge"><span class="dot"></span><span>NSOS Lab · Yangzhou University · China</span></div>
     <h1 style="font-size:clamp(32px,4.4vw,48px)">Research at NSOS</h1>
@@ -365,5 +367,20 @@
 </script>
 <script data-goatcounter="https://nsos-lab.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="assets/viz-enhance.js?v=1"></script>
+<script>
+(function(){
+  var canvas=document.getElementById('hero-net');
+  if(!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var hero=canvas.parentElement;
+  var dpr=Math.min(window.devicePixelRatio||1,2);
+  var W,H,pts=[],mx=-9e3,my=-9e3;
+  var COLS=['#4ECDC4','#45B7D1','#96E6A1','#FF5E3A','#FFB347','#A78BFA'];
+  var LK=150,MR=160,N=85;
+  function resize(){var r=hero.getBoundingClientRect();W=r.width;H=r.height;canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0)}
+  function init(){pts=[];for(var i=0;i<N;i++){var d=Math.random(),sz=1.5+d*3.2,al=.22+d*.6,sp=.12+d*.35;pts.push({x:Math.random()*W,y:Math.random()*H,z:d,vx:(Math.random()-.5)*sp,vy:(Math.random()-.5)*sp,s:sz,a:al,c:COLS[~~(Math.random()*COLS.length)],p:Math.random()*6.28,ps:.008+Math.random()*.018})}}
+  function tick(){ctx.clearRect(0,0,W,H);for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;p.p+=p.ps;if(p.x<-20)p.x=W+20;if(p.x>W+20)p.x=-20;if(p.y<-20)p.y=H+20;if(p.y>H+20)p.y=-20;var dx=p.x-mx,dy=p.y-my,d=Math.sqrt(dx*dx+dy*dy);if(d<MR&&d>0){var f=(MR-d)/MR*.7;p.x+=dx/d*f;p.y+=dy/d*f}var sc=1+Math.sin(p.p)*.15,ds=p.s*sc;var g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,ds*3.5);g.addColorStop(0,p.c+'30');g.addColorStop(1,p.c+'00');ctx.fillStyle=g;ctx.beginPath();ctx.arc(p.x,p.y,ds*3.5,0,6.28);ctx.fill();ctx.globalAlpha=p.a;ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(p.x,p.y,ds,0,6.28);ctx.fill();ctx.globalAlpha=1}ctx.lineWidth=.6;for(var i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){var a=pts[i],b=pts[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);if(d<LK){var al=(1-d/LK)*.3*Math.min(a.a,b.a);ctx.strokeStyle='rgba(180,220,240,'+al+')';ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}var fg=ctx.createLinearGradient(0,H-70,0,H);fg.addColorStop(0,'rgba(10,37,64,0)');fg.addColorStop(1,'rgba(10,37,64,.45)');ctx.fillStyle=fg;ctx.fillRect(0,H-70,W,70);requestAnimationFrame(tick)}hero.addEventListener('mousemove',function(e){var r=hero.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});hero.addEventListener('mouseleave',function(){mx=-9e3;my=-9e3});window.addEventListener('resize',resize);resize();init();tick();
+})();
+</script>
 </body>
 </html>
