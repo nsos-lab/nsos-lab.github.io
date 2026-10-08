@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<title>Team — NSOS Lab, Yangzhou University</title>
+<meta name="description" content="Team members of NSOS Lab, Yangzhou University — students and researchers working on networked systems observability and AI agent security." />
+<link rel="canonical" href="https://nsos-lab.github.io/team.html" />
+<meta property="og:site_name" content="NSOS Lab" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Team — NSOS Lab, Yangzhou University" />
+<meta property="og:description" content="Team members of NSOS Lab, Yangzhou University — students and researchers working on networked systems observability and AI agent security." />
+<meta property="og:url" content="https://nsos-lab.github.io/team.html" />
+<meta property="og:image" content="https://nsos-lab.github.io/assets/og-card.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Team — NSOS Lab, Yangzhou University" />
+<meta name="twitter:description" content="Team members of NSOS Lab, Yangzhou University — students and researchers working on networked systems observability and AI agent security." />
+<meta name="twitter:image" content="https://nsos-lab.github.io/assets/og-card.png" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Team — NSOS Lab, Yangzhou University", "url": "https://nsos-lab.github.io/team.html", "description": "Team members of NSOS Lab, Yangzhou University — students and researchers working on networked systems observability and AI agent security.", "isPartOf": {"@type": "WebSite", "name": "NSOS Lab", "url": "https://nsos-lab.github.io/"}}</script>
+<style>
+  :root{
+    --navy:#0A2540;
+    --navy-2:#133157;
+    --accent:#FF5E3A;
+    --accent-2:#FFB347;
+    --bg:#F8FAFC;
+    --bg-alt:#FFFFFF;
+    --text:#1A2332;
+    --text-soft:#4A5872;
+    --border:#E4E9F0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI","Helvetica Neue",Arial,sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--navy);text-decoration:none;transition:color .2s}
+  a:hover{color:var(--accent)}
+  code,pre{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+
+  /* ===== Nav ===== */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:1100px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--navy);font-size:18px}
+  .logo-mark{
+    height:40px;width:auto;display:block;
+  }
+  .nav-links{display:flex;gap:28px;font-size:14px;font-weight:500}
+  .nav-links a{color:var(--text-soft)}
+  .nav-links a:hover{color:var(--accent)}
+  @media(max-width:720px){.nav-links{display:none}}
+
+  /* ===== Hero ===== */
+  .hero{
+    background:
+      radial-gradient(1200px 500px at 80% -10%,rgba(255,94,58,.15),transparent 60%),
+      radial-gradient(1000px 600px at -10% 20%,rgba(19,49,87,.08),transparent 60%),
+      linear-gradient(180deg,#0A2540 0%,#133157 100%);
+    color:#fff;padding:96px 24px 88px;
+    position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse at 50% 30%,black 40%,transparent 80%);
+  }
+  #hero-net{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-inner{max-width:1100px;margin:0 auto;position:relative}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 14px;border-radius:999px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+    font-size:13px;color:#CBD5E1;margin-bottom:22px;
+  }
+  .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;box-shadow:0 0 8px #4ADE80}
+  .hero h1{
+    font-size:clamp(38px,5.5vw,62px);
+    line-height:1.08;letter-spacing:-.02em;font-weight:800;
+    margin-bottom:18px;
+  }
+  .hero h1 .accent{
+    background:linear-gradient(90deg,var(--accent-2),var(--accent));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero .tagline{
+    font-size:clamp(17px,1.6vw,20px);
+    color:#CBD5E1;max-width:720px;margin-bottom:32px;
+  }
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+  .chip{
+    font-size:13px;padding:6px 12px;border-radius:6px;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+    color:#E2E8F0;
+  }
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 22px;border-radius:8px;font-weight:600;font-size:15px;
+    transition:transform .15s,box-shadow .15s;
+  }
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 18px rgba(255,94,58,.35)}
+  .btn-primary:hover{transform:translateY(-1px);color:#fff;box-shadow:0 10px 24px rgba(255,94,58,.45)}
+  .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
+  .btn-ghost:hover{background:rgba(255,255,255,.08);color:#fff}
+
+  /* ===== Section base ===== */
+  section{padding:88px 24px}
+  .section-inner{max-width:1100px;margin:0 auto}
+  .section-kicker{
+    font-size:13px;font-weight:700;letter-spacing:.14em;
+    color:var(--accent);text-transform:uppercase;margin-bottom:10px;
+  }
+  .section-title{
+    font-size:clamp(28px,3.2vw,40px);
+    font-weight:800;color:var(--navy);line-height:1.15;letter-spacing:-.01em;
+    margin-bottom:14px;
+  }
+  .section-lead{color:var(--text-soft);max-width:720px;margin-bottom:44px;font-size:17px}
+
+  /* ===== Research ===== */
+  .research-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;
+  }
+  .rcard{
+    background:#fff;border:1px solid var(--border);border-radius:14px;padding:28px;
+    transition:transform .2s,box-shadow .2s,border-color .2s;
+    position:relative;overflow:hidden;
+  }
+  .rcard:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(10,37,64,.08);border-color:transparent}
+  .rcard::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--navy),var(--accent));
+    opacity:0;transition:opacity .25s;
+  }
+  .rcard:hover::before{opacity:1}
+  .ricon{
+    width:46px;height:46px;border-radius:11px;
+    background:linear-gradient(135deg,#EEF2FF,#FFE7DD);
+    display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px;
+  }
+  .rcard h3{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:10px}
+  .rcard p{color:var(--text-soft);font-size:15px}
+  .rtags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+  .rtag{font-size:12px;color:var(--navy-2);background:#F1F5F9;padding:3px 9px;border-radius:4px}
+
+  /* ===== Team ===== */
+  #team{background:var(--bg-alt)}
+  .team-group{margin-bottom:44px}
+  .team-group:last-child{margin-bottom:0}
+  .team-group-title{
+    font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--text-soft);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--border);
+  }
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+  .member{
+    background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;
+    display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+    transition:border-color .2s,transform .2s;
+  }
+  .member:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .avatar{
+    width:56px;height:56px;border-radius:50%;
+    background:linear-gradient(135deg,var(--navy),var(--accent));
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:18px;flex-shrink:0;object-fit:cover;
+  }
+  img.avatar{padding:0;border:1px solid var(--border)}
+  .member-info{flex:1;min-width:0}
+  .member-name{font-weight:700;color:var(--navy);font-size:15px}
+  .member-role{font-size:13px;color:var(--text-soft);margin-top:2px}
+  .member-interest{font-size:12px;color:var(--accent);margin-top:6px}
+  .member-links{display:flex;gap:10px;margin-top:8px}
+  .member-links a{font-size:12px;color:var(--text-soft)}
+  .member-links a:hover{color:var(--accent)}
+
+  /* ===== Publications ===== */
+  .pub-year{
+    font-size:13px;font-weight:700;color:var(--accent);
+    letter-spacing:.08em;margin-bottom:12px;margin-top:28px;
+  }
+  .pub-year:first-of-type{margin-top:0}
+  .pub{
+    background:#fff;border:1px solid var(--border);border-radius:10px;
+    padding:18px 22px;margin-bottom:10px;
+    transition:border-color .2s;
+  }
+  .pub:hover{border-color:var(--navy)}
+  .pub-title{font-weight:600;color:var(--navy);font-size:16px;line-height:1.4}
+  .pub-title a:hover{color:var(--accent)}
+  .pub-authors{font-size:14px;color:var(--text-soft);margin-top:6px}
+  .pub-authors strong{color:var(--text);font-weight:600}
+  .pub-venue{font-size:13px;color:var(--navy-2);margin-top:6px;font-style:italic}
+  .pub-tags{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .ptag{
+    font-size:11px;font-weight:600;padding:3px 9px;border-radius:4px;
+    background:#F1F5F9;color:var(--navy-2);border:1px solid transparent;
+  }
+  .ptag.pdf{background:#FFE7DD;color:#C2410C}
+  .ptag.code{background:#DCFCE7;color:#166534}
+  .ptag.tag-topic{background:#EEF2F7;color:#334155}
+  .ptag.tier-a{background:#FEE2E2;color:#B91C1C;font-weight:700}
+  .ptag.tier-b{background:#FFEDD5;color:#C2410C}
+  .ptag.tier-c{background:#E0E7FF;color:#3730A3}
+  .ptag.tier-sci{background:#DBEAFE;color:#1D4ED8}
+  .ptag.tier-pre{background:#F3E8FF;color:#7E22CE}
+  .ptag.tier-cn{background:#FEF9C3;color:#854D0E}
+  .ptag.tier-ed{background:#F1F5F9;color:#475569}
+
+  /* ===== News ===== */
+  #news{background:var(--bg-alt)}
+  .news-list{display:flex;flex-direction:column;gap:14px}
+  .news-item{
+    display:flex;gap:18px;padding:14px 18px;
+    background:#fff;border:1px solid var(--border);border-radius:10px;
+  }
+  .news-date{
+    flex-shrink:0;min-width:90px;font-size:13px;font-weight:700;color:var(--accent);
+    padding-top:2px;
+  }
+  .news-body{flex:1;font-size:14.5px;color:var(--text)}
+  .news-tag{
+    display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;
+    padding:2px 8px;border-radius:4px;background:#EEF2FF;color:var(--navy);margin-right:8px;
+  }
+
+  /* ===== Join Us ===== */
+  .join{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    color:#fff;padding:64px 24px;text-align:center;
+  }
+  .join-inner{max-width:720px;margin:0 auto}
+  .join h2{font-size:clamp(26px,3vw,34px);font-weight:800;margin-bottom:14px;letter-spacing:-.01em}
+  .join p{color:#CBD5E1;margin-bottom:26px;font-size:16.5px}
+  .join .btn-primary{background:var(--accent)}
+
+  /* ===== Footer ===== */
+  footer{
+    background:linear-gradient(180deg,#041525 0%,#061A30 40%,#0A1E38 100%);
+    color:#94A3B8;padding:0;font-size:14px;
+    position:relative;overflow:hidden;
+  }
+  footer::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent 0%,#4ECDC4 20%,#FF5E3A 50%,#4ECDC4 80%,transparent 100%);
+    animation:footerGlow 4s ease-in-out infinite;
+  }
+  @keyframes footerGlow{
+    0%,100%{opacity:.6}
+    50%{opacity:1}
+  }
+  #footer-net{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+  .footer-content{position:relative;z-index:2}
+  .footer-main{
+    max-width:1100px;margin:0 auto;padding:56px 24px 32px;
+    display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:start;
+  }
+  .footer-brand{display:flex;align-items:flex-start;gap:18px}
+  .footer-logo-wrap{
+    position:relative;flex-shrink:0;
+  }
+  .footer-logo-wrap::after{
+    content:"";position:absolute;inset:-8px;border-radius:50%;
+    background:radial-gradient(circle,rgba(78,205,196,.15),transparent 70%);
+    animation:logoPulse 3s ease-in-out infinite;
+  }
+  @keyframes logoPulse{
+    0%,100%{opacity:.5;transform:scale(1)}
+    50%{opacity:1;transform:scale(1.08)}
+  }
+  .footer-logo-wrap img{height:64px;width:auto;display:block;position:relative;z-index:1}
+  .footer-brand-text strong{color:#E2E8F0;font-size:15px;display:block;margin-bottom:6px}
+  .footer-brand-text span{font-size:13px;color:#64748B;line-height:1.7}
+  .footer-links{display:flex;flex-direction:column;gap:10px;align-items:flex-end;justify-content:center}
+  .footer-links a{
+    color:#CBD5E1;font-size:14px;font-weight:500;
+    padding:6px 16px;border-radius:6px;
+    border:1px solid rgba(255,255,255,.08);
+    transition:all .25s ease;display:inline-flex;align-items:center;gap:6px;
+  }
+  .footer-links a:hover{
+    color:#4ECDC4;border-color:rgba(78,205,196,.4);
+    background:rgba(78,205,196,.06);
+    box-shadow:0 0 16px rgba(78,205,196,.12);
+  }
+  .footer-divider{
+    max-width:1100px;margin:0 auto;padding:0 24px;
+  }
+  .footer-divider hr{
+    border:none;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(78,205,196,.2),rgba(255,94,58,.15),transparent);
+  }
+  .footer-map{
+    max-width:1100px;margin:0 auto;padding:24px 24px 20px;
+  }
+  .footer-map-frame{
+    position:relative;border-radius:14px;overflow:hidden;
+    border:1px solid rgba(78,205,196,.15);
+    box-shadow:0 0 30px rgba(78,205,196,.06),inset 0 0 30px rgba(0,0,0,.3);
+  }
+  .footer-map-frame iframe{display:block;width:100%;height:220px;border:none}
+  .footer-map-meta{
+    margin-top:10px;font-size:12px;color:#475569;
+    display:flex;align-items:center;gap:8px;
+  }
+  .footer-map-meta a{color:#4ECDC4;text-decoration:none;transition:color .2s}
+  .footer-map-meta a:hover{color:#FF5E3A}
+  .footer-bottom{
+    max-width:1100px;margin:0 auto;padding:16px 24px 28px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:12px;color:#475569;
+  }
+  .footer-bottom .tech-tag{
+    font-size:11px;padding:3px 10px;border-radius:4px;
+    background:rgba(78,205,196,.06);border:1px solid rgba(78,205,196,.12);
+    color:#4ECDC4;letter-spacing:.06em;
+  }
+  @media(max-width:768px){
+    .footer-main{grid-template-columns:1fr;text-align:center;gap:24px}
+    .footer-brand{flex-direction:column;align-items:center}
+    .footer-links{align-items:center}
+    .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+  }
+</style>
+<link rel="stylesheet" href="assets/viz-enhance.css?v=1" />
+
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <img class="logo-mark" src="assets/nsos-lab-logo-horizontal.svg" alt="NSOS Lab" />
+    </a>
+    <div class="nav-links">
+      <a href="research.html">Research</a>
+      <a href="team.html" style="color:var(--accent)">Team</a>
+      <a href="publications.html">Publications</a>
+      <a href="#news">News</a>
+      <a href="daily.html">Daily</a>
+      <a href="#join">Join Us</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== SUB HEADER ========== -->
+<header class="hero" style="padding:64px 24px 56px">
+  <canvas id="hero-net"></canvas>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="dot"></span><span>NSOS Lab · Yangzhou University · China</span></div>
+    <h1 style="font-size:clamp(30px,4vw,44px)">Team</h1>
+    <p class="tagline" style="margin-bottom:0">PI, Collaborators, and students.</p>
+  </div>
+</header>
+
+<!-- ========== TEAM ========== -->
+<section id="team">
+  <div class="section-inner">
+    <div class="section-kicker">Team</div>
+    <p class="section-lead">
+      A small, focused group working at the intersection of systems, security, and LLMs/Agent.
+    </p>
+
+    <div class="team-group">
+      <div class="team-group-title">Principal Investigator</div>
+      <div class="team-grid">
+        <div class="member">
+          <img class="avatar" src="assets/team/xuan-liu.jpg?v=2" alt="Xuan Liu" />
+          <div class="member-info">
+            <div class="member-name">Xuan Liu</div>
+            <div class="member-role">Lecturer · Graduate Advisor · Ph.D. (Southeast Univ.)</div>
+            <div class="member-role">Yangzhou University, China</div>
+            <div class="member-interest">Observability · Security</div>
+            <div class="member-links">
+              <a href="http://liuxuan.website" target="_blank">Website</a>
+              <a href="https://scholar.google.com/citations?user=N95MHnkAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+              <a href="https://github.com/yusuf1126" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-group">
+      <div class="team-group-title">Collaborators</div>
+      <div class="team-grid">
+        <div class="member">
+          <img class="avatar" src="assets/team/xiang-chen.jpg?v=1" alt="Xiang Chen" />
+          <div class="member-info">
+            <div class="member-name">Xiang Chen</div>
+            <div class="member-role">Zhejiang University, China</div>
+            <div class="member-interest">Network Measurement · Network Security · LLMs</div>
+            <div class="member-links">
+              <a href="https://person.zju.edu.cn/en/0026821" target="_blank">Website</a>
+              <a href="https://scholar.google.com/citations?user=ZMdsjDUAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+            </div>
+          </div>
+        </div>
+        <div class="member">
+          <img class="avatar" src="assets/team/dezhang-kong.jpg?v=1" alt="Dezhang Kong" />
+          <div class="member-info">
+            <div class="member-name">Dezhang Kong</div>
+            <div class="member-role">Zhejiang University, China</div>
+            <div class="member-interest">SDN Security · Agentic System · Network Security</div>
+            <div class="member-links">
+              <a href="https://scholar.google.com/citations?user=DMKe8qYAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+            </div>
+          </div>
+        </div>
+        <div class="member">
+          <img class="avatar" src="assets/team/xiaodong-zang.jpg?v=1" alt="Xiaodong Zang" />
+          <div class="member-info">
+            <div class="member-name">Xiaodong Zang</div>
+            <div class="member-role">Qufu Normal University, China</div>
+            <div class="member-interest">Network Attack &amp; Defense · Anomaly Detection</div>
+            <div class="member-links">
+              <a href="https://cyber.qfnu.edu.cn/info/1099/2857.htm" target="_blank" rel="noopener">Website</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-group">
+      <div class="team-group-title">PhD Students</div>
+      <div class="team-grid">
+        <div class="member">
+          <div class="avatar">FH</div>
+          <div class="member-info">
+            <div class="member-name">Fangbo Hou</div>
+            <div class="member-role">Yangzhou University, China</div>
+            <div class="member-interest">eBPF-based Defense for AI Agents</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-group">
+      <div class="team-group-title">Master Students</div>
+      <div class="team-grid">
+        <div class="member">
+          <div class="avatar">HY</div>
+          <div class="member-info">
+            <div class="member-name">Haoran Yin</div>
+            <div class="member-role">Yangzhou University, China</div>
+            <div class="member-interest">Attack Propagation in Multi-Agent Systems</div>
+          </div>
+        </div>
+        <div class="member">
+          <div class="avatar">SC</div>
+          <div class="member-info">
+            <div class="member-name">Shengyu Chu</div>
+            <div class="member-role">Yangzhou University, China</div>
+            <div class="member-interest">Loop Attack Detection for Web Agents</div>
+          </div>
+        </div>
+        <div class="member">
+          <div class="avatar">ZL</div>
+          <div class="member-info">
+            <div class="member-name">Zhenghong Liu</div>
+            <div class="member-role">Yangzhou University, China</div>
+            <div class="member-interest">Skill-Level DoS Attack Detection</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-group">
+      <div class="team-group-title">Undergraduate Students</div>
+      <div class="team-grid">
+        <div class="member">
+          <div class="avatar">ZT</div>
+          <div class="member-info">
+            <div class="member-name">Zhicheng Tan</div>
+            <div class="member-role">Yangzhou University, China</div>
+            <div class="member-interest">DoS Attack Detection for AI Agents</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <canvas id="footer-net"></canvas>
+  <div class="footer-content">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <div class="footer-logo-wrap">
+          <img src="assets/nsos-lab-logo-shield-footer.svg" alt="NSOS Lab" />
+        </div>
+        <div class="footer-brand-text">
+          <strong>Networked Systems Observability &amp; Security Lab</strong>
+          <span>College of Information and Artificial Intelligence<br/>Yangzhou University<br/>Room 2503, Boxue Building, No.196 Huayang West Road<br/>Yangzhou, Jiangsu 225127, China</span>
+        </div>
+      </div>
+      <div></div>
+      <div class="footer-links">
+        <a href="http://liuxuan.website" target="_blank">🔗 PI Website</a>
+        <a href="https://github.com/nsos-lab" target="_blank">🐙 GitHub</a>
+        <a href="https://scholar.google.com/citations?user=N95MHnkAAAAJ&hl=en" target="_blank" rel="noopener">📚 Google Scholar</a>
+      </div>
+    </div>
+    <div class="footer-divider"><hr/></div>
+    <div class="footer-map">
+      <div class="footer-map-frame">
+        <iframe title="NSOS Lab location" src="https://www.openstreetmap.org/export/embed.html?bbox=119.3830%2C32.3389%2C119.3990%2C32.3469&layer=mapnik&marker=32.3429%2C119.3910" loading="lazy"></iframe>
+      </div>
+      <div class="footer-map-meta">
+        <span>📍 Map data &copy;</span>
+        <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>
+        <span>&middot;</span>
+        <a href="https://www.openstreetmap.org/?mlat=32.3429&mlon=119.3910#map=16/32.3429/119.3910" target="_blank" rel="noopener">View larger map &rarr;</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 NSOS Lab. All rights reserved.</span>
+      <span class="tech-tag">OBSERVABILITY · SECURITY · AI</span>
+    </div>
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top" style="position:fixed;right:28px;bottom:28px;z-index:99;width:44px;height:44px;border-radius:50%;border:1px solid #E4E9F0;background:#FFFFFF;color:#FF5E3A;font-size:18px;display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;box-shadow:0 4px 16px rgba(10,37,64,.18)">&uarr;</button>
+<script>
+(function(){
+  var b=document.getElementById('back-to-top');
+  window.addEventListener('scroll',function(){
+    var on=window.scrollY>400;
+    b.style.opacity=on?'1':'0';
+    b.style.pointerEvents=on?'auto':'none';
+  },{passive:true});
+  b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script>
+<script data-goatcounter="https://nsos-lab.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="assets/viz-enhance.js?v=1"></script>
+<script>
+(function(){
+  var canvas=document.getElementById('hero-net');
+  if(!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var hero=canvas.parentElement;
+  var dpr=Math.min(window.devicePixelRatio||1,2);
+  var W,H,pts=[],mx=-9e3,my=-9e3;
+  var COLS=['#4ECDC4','#45B7D1','#96E6A1','#FF5E3A','#FFB347','#A78BFA'];
+  var LK=150,MR=160,N=85;
+  function resize(){var r=hero.getBoundingClientRect();W=r.width;H=r.height;canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0)}
+  function init(){pts=[];for(var i=0;i<N;i++){var d=Math.random(),sz=1.5+d*3.2,al=.22+d*.6,sp=.12+d*.35;pts.push({x:Math.random()*W,y:Math.random()*H,z:d,vx:(Math.random()-.5)*sp,vy:(Math.random()-.5)*sp,s:sz,a:al,c:COLS[~~(Math.random()*COLS.length)],p:Math.random()*6.28,ps:.008+Math.random()*.018})}}
+  function tick(){ctx.clearRect(0,0,W,H);for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;p.p+=p.ps;if(p.x<-20)p.x=W+20;if(p.x>W+20)p.x=-20;if(p.y<-20)p.y=H+20;if(p.y>H+20)p.y=-20;var dx=p.x-mx,dy=p.y-my,d=Math.sqrt(dx*dx+dy*dy);if(d<MR&&d>0){var f=(MR-d)/MR*.7;p.x+=dx/d*f;p.y+=dy/d*f}var sc=1+Math.sin(p.p)*.15,ds=p.s*sc;var g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,ds*3.5);g.addColorStop(0,p.c+'30');g.addColorStop(1,p.c+'00');ctx.fillStyle=g;ctx.beginPath();ctx.arc(p.x,p.y,ds*3.5,0,6.28);ctx.fill();ctx.globalAlpha=p.a;ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(p.x,p.y,ds,0,6.28);ctx.fill();ctx.globalAlpha=1}ctx.lineWidth=.6;for(var i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){var a=pts[i],b=pts[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);if(d<LK){var al=(1-d/LK)*.3*Math.min(a.a,b.a);ctx.strokeStyle='rgba(180,220,240,'+al+')';ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}var fg=ctx.createLinearGradient(0,H-70,0,H);fg.addColorStop(0,'rgba(10,37,64,0)');fg.addColorStop(1,'rgba(10,37,64,.45)');ctx.fillStyle=fg;ctx.fillRect(0,H-70,W,70);requestAnimationFrame(tick)}hero.addEventListener('mousemove',function(e){var r=hero.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});hero.addEventListener('mouseleave',function(){mx=-9e3;my=-9e3});window.addEventListener('resize',resize);resize();init();tick();
+})();
+</script>
+<script>
+(function(){
+  var c=document.getElementById('footer-net');
+  if(!c)return;
+  var ctx=c.getContext('2d'),footer=c.parentElement;
+  var dpr=Math.min(window.devicePixelRatio||1,2);
+  var W,H,pts=[],t=0;
+  function resize(){var r=footer.getBoundingClientRect();W=r.width;H=r.height;c.width=W*dpr;c.height=H*dpr;c.style.width=W+'px';c.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0)}
+  function init(){
+    pts=[];
+    for(var i=0;i<60;i++){
+      pts.push({
+        x:Math.random()*W,y:Math.random()*H,
+        vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,
+        s:1+Math.random()*2.5,
+        a:.15+Math.random()*.45,
+        c:Math.random()>.7?'#4ECDC4':'#45B7D1',
+        phase:Math.random()*6.28
+      });
+    }
+  }
+  function draw(){
+    t+=.008;
+    ctx.clearRect(0,0,W,H);
+    // Subtle grid
+    ctx.strokeStyle='rgba(78,205,196,.03)';ctx.lineWidth=.5;
+    var gs=60;
+    for(var x=0;x<W;x+=gs){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
+    for(var y=0;y<H;y+=gs){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+    // Particles
+    for(var i=0;i<pts.length;i++){
+      var p=pts[i];
+      p.x+=p.vx;p.y+=p.vy;p.phase+=.012;
+      if(p.x<0)p.x=W;if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      var glow=p.a*(0.7+0.3*Math.sin(p.phase));
+      // glow
+      var g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.s*5);
+      g.addColorStop(0,p.c+'25');g.addColorStop(1,p.c+'00');
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(p.x,p.y,p.s*5,0,6.28);ctx.fill();
+      // core
+      ctx.globalAlpha=glow;ctx.fillStyle=p.c;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,6.28);ctx.fill();
+      ctx.globalAlpha=1;
+    }
+    // Connections
+    for(var i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){
+      var a=pts[i],b=pts[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<120){
+        var al=(1-d/120)*.18;
+        ctx.strokeStyle='rgba(78,205,196,'+al+')';ctx.lineWidth=.5;
+        ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+      }
+    }
+    // Scan line
+    var sy=(Math.sin(t*.5)*.5+.5)*H;
+    var sg=ctx.createLinearGradient(0,sy-30,0,sy+30);
+    sg.addColorStop(0,'rgba(78,205,196,0)');sg.addColorStop(.5,'rgba(78,205,196,.04)');sg.addColorStop(1,'rgba(78,205,196,0)');
+    ctx.fillStyle=sg;ctx.fillRect(0,sy-30,W,60);
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',resize);
+  resize();init();draw();
+})();
+</script>
+</body>
+</html>
