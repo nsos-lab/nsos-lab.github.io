@@ -210,27 +210,47 @@
     color:var(--text-soft);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--border);
   }
   .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
-  /* PI layout: card + stats */
-  .pi-layout{display:grid;grid-template-columns:340px 1fr;gap:32px;align-items:stretch}
+  /* PI layout: unified card */
+  .pi-layout{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:0;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    overflow:hidden;
+  }
   @media(max-width:800px){.pi-layout{grid-template-columns:1fr}}
-  .stats-panel{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-content:center}
+  .pi-left{
+    padding:32px 36px;
+    display:flex;flex-direction:row;align-items:center;gap:20px;
+    border-right:1px solid var(--border);
+    min-width:380px;
+  }
+  @media(max-width:800px){.pi-left{flex-direction:column;border-right:none;border-bottom:1px solid var(--border);min-width:auto;text-align:center}}
+  .pi-left .member{background:transparent;border:none;padding:0;gap:16px;width:auto;flex-direction:row;align-items:center}
+  @media(max-width:800px){.pi-left .member{flex-direction:column}}
+  .pi-left .avatar{width:80px;height:80px;font-size:24px;box-shadow:0 4px 16px rgba(10,37,64,.12)}
+  .pi-left .member-info{display:flex;flex-direction:column;gap:4px}
+  .pi-right{
+    padding:28px 32px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+    align-content:center;
+  }
+  @media(max-width:1000px) and (min-width:801px){.pi-right{grid-template-columns:1fr 1fr;gap:16px}}
+  @media(max-width:800px){.pi-right{grid-template-columns:1fr 1fr;gap:12px}}
   .stat-card{
-    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
-    border-radius:14px;padding:24px 20px;
+    background:linear-gradient(135deg,rgba(10,37,64,.02),rgba(78,205,196,.04));
+    border:1px solid var(--border);
+    border-radius:12px;padding:20px 12px;
     display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;transition:all .3s ease;position:relative;overflow:hidden;
   }
   .stat-card:hover{border-color:var(--accent-2);transform:translateY(-3px);box-shadow:0 8px 24px rgba(78,205,196,.12)}
-  .stat-card::before{
-    content:'';position:absolute;top:0;left:0;right:0;height:2px;
-    background:linear-gradient(90deg,transparent,var(--accent-2),transparent);
-    opacity:0;transition:opacity .3s;
-  }
-  .stat-card:hover::before{opacity:1}
   .stat-icon{font-size:24px;margin-bottom:8px}
-  .stat-number{font-size:32px;font-weight:800;background:linear-gradient(135deg,var(--accent-2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
-  .stat-label{font-size:12px;color:var(--text-soft);margin-top:6px;letter-spacing:.05em;text-transform:uppercase}
-  .stat-sub{font-size:11px;color:rgba(148,163,184,.7);margin-top:3px}
+  .stat-number{font-size:30px;font-weight:800;background:linear-gradient(135deg,var(--navy),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
+  .stat-label{font-size:11px;color:var(--text-soft);margin-top:6px;letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+  .stat-sub{font-size:10px;color:rgba(100,116,139,.8);margin-top:3px}
   .member{
     background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;
     display:flex;flex-direction:column;align-items:flex-start;gap:10px;
@@ -659,20 +679,21 @@
     <div class="team-group">
       <div class="team-group-title">Principal Investigator</div>
       <div class="pi-layout">
-        <div class="member">
-          <img class="avatar" src="assets/team/xuan-liu.jpg?v=3" alt="Xuan Liu" />
-          <div class="member-info">
-            <div class="member-name">Xuan Liu</div>
-            <div class="member-role">Lecturer · Graduate Advisor · Ph.D. (Southeast Univ.)</div>
-            <div class="member-role">Yangzhou University, China</div>
-            <div class="member-interest">Observability · Security</div>
-            <div class="member-links">
-              <a href="http://liuxuan.website" target="_blank" rel="noopener">Website</a>
-              <a href="https://scholar.google.com/citations?user=N95MHnkAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-              <a href="https://github.com/yusuf1126" target="_blank" rel="noopener">GitHub</a>
+        <div class="pi-left">
+          <div class="member">
+            <img class="avatar" src="assets/team/xuan-liu.jpg?v=3" alt="Xuan Liu" />
+            <div class="member-info">
+              <div class="member-name">Xuan Liu</div>
+              <div class="member-role">Lecturer · Graduate Advisor</div>
+              <div class="member-role">Ph.D., Southeast University</div>
+              <div class="member-interest">Observability · Security</div>
+              <div class="member-links">
+                <a href="http://liuxuan.website" target="_blank" rel="noopener">Website</a>
+                <a href="https://scholar.google.com/citations?user=N95MHnkAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a>
+                <a href="https://github.com/yusuf1126" target="_blank" rel="noopener">GitHub</a>
+              </div>
             </div>
           </div>
-        </div>
         <div class="stats-panel">
           <div class="stat-card">
             <div class="stat-icon">📄</div>
