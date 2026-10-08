@@ -210,62 +210,53 @@
     color:var(--text-soft);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--border);
   }
   .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
-  /* PI layout: horizontal card with stats */
+  /* PI layout: unified card */
   .pi-layout{
     display:grid;
-    grid-template-columns:360px 1fr;
+    grid-template-columns:1fr 1fr;
     gap:0;
-    align-items:stretch;
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:18px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
     overflow:hidden;
-    backdrop-filter:blur(8px);
   }
   @media(max-width:800px){.pi-layout{grid-template-columns:1fr}}
-  .pi-info{
-    padding:32px 28px;
-    display:flex;flex-direction:column;
-    border-right:1px solid rgba(255,255,255,.06);
+  .pi-left{
+    padding:36px 32px;
+    display:flex;flex-direction:column;align-items:flex-start;gap:14px;
+    border-right:1px solid var(--border);
+    background:linear-gradient(135deg,rgba(10,37,64,.02),rgba(78,205,196,.03));
   }
-  .pi-info .member{background:transparent;border:none;padding:0}
-  .pi-info .member-name{color:#E2E8F0}
-  .pi-info .member-role{color:#94A3B8}
-  .pi-info .member-interest{color:#4ECDC4}
-  .pi-info .member-links a{color:#94A3B8}
-  .pi-info .member-links a:hover{color:#4ECDC4}
-  .pi-info .avatar{box-shadow:0 4px 16px rgba(78,205,196,.15)}
+  @media(max-width:800px){.pi-left{border-right:none;border-bottom:1px solid var(--border)}}
+  .pi-left .member{background:transparent;border:none;padding:0;gap:12px;width:100%}
+  .pi-left .avatar{width:72px;height:72px;font-size:22px}
   .pi-bio{
-    margin-top:16px;font-size:13.5px;line-height:1.75;color:var(--text-soft);
+    font-size:14px;line-height:1.7;color:var(--text-soft);margin-top:4px;
   }
-  .pi-bio strong{color:#CBD5E1}
-  .pi-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .pi-bio strong{color:var(--navy)}
+  .pi-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
   .pi-tags span{
-    font-size:11px;padding:4px 12px;border-radius:20px;
+    font-size:11px;padding:3px 10px;border-radius:4px;
     background:rgba(78,205,196,.08);border:1px solid rgba(78,205,196,.18);
-    color:#4ECDC4;letter-spacing:.03em;
+    color:var(--accent);letter-spacing:.02em;font-weight:500;
   }
-  .stats-panel{
-    display:grid;grid-template-columns:1fr 1fr;gap:14px;
-    padding:28px 28px;align-content:center;
+  .pi-right{
+    padding:36px 32px;
+    display:grid;grid-template-columns:1fr 1fr;gap:16px;
+    align-content:center;
   }
   .stat-card{
-    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
-    border-radius:14px;padding:22px 16px;
+    background:linear-gradient(135deg,rgba(10,37,64,.03),rgba(78,205,196,.04));
+    border:1px solid var(--border);
+    border-radius:14px;padding:28px 20px;
     display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;transition:all .3s ease;position:relative;overflow:hidden;
   }
   .stat-card:hover{border-color:var(--accent-2);transform:translateY(-3px);box-shadow:0 8px 24px rgba(78,205,196,.12)}
-  .stat-card::before{
-    content:'';position:absolute;top:0;left:0;right:0;height:2px;
-    background:linear-gradient(90deg,transparent,var(--accent-2),transparent);
-    opacity:0;transition:opacity .3s;
-  }
-  .stat-card:hover::before{opacity:1}
-  .stat-icon{font-size:24px;margin-bottom:8px}
-  .stat-number{font-size:32px;font-weight:800;background:linear-gradient(135deg,var(--accent-2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
-  .stat-label{font-size:12px;color:var(--text-soft);margin-top:6px;letter-spacing:.05em;text-transform:uppercase}
-  .stat-sub{font-size:11px;color:rgba(148,163,184,.7);margin-top:3px}
+  .stat-icon{font-size:26px;margin-bottom:10px}
+  .stat-number{font-size:36px;font-weight:800;background:linear-gradient(135deg,var(--navy),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
+  .stat-label{font-size:12px;color:var(--text-soft);margin-top:8px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+  .stat-sub{font-size:11px;color:rgba(100,116,139,.8);margin-top:4px}
   .member{
     background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;
     display:flex;flex-direction:column;align-items:flex-start;gap:10px;
@@ -694,7 +685,7 @@
     <div class="team-group">
       <div class="team-group-title">Principal Investigator</div>
       <div class="pi-layout">
-        <div class="pi-info">
+        <div class="pi-left">
           <div class="member">
             <img class="avatar" src="assets/team/xuan-liu.jpg?v=3" alt="Xuan Liu" />
             <div class="member-info">
@@ -710,7 +701,7 @@
             </div>
           </div>
           <div class="pi-bio">
-            Leading research at the intersection of <strong>system observability</strong>, <strong>agent security</strong>, and <strong>eBPF-based runtime monitoring</strong>. Editor for 9 international journals including IEEE TDSC.
+            Leading research at the intersection of <strong>system observability</strong>, <strong>agent security</strong>, and <strong>eBPF-based runtime monitoring</strong>. Editorial board member for 9 international journals including IEEE TDSC.
           </div>
           <div class="pi-tags">
             <span>eBPF</span>
@@ -719,7 +710,7 @@
             <span>Runtime Safety</span>
           </div>
         </div>
-        <div class="stats-panel">
+        <div class="pi-right">
           <div class="stat-card">
             <div class="stat-icon">📄</div>
             <div class="stat-number">65+</div>
