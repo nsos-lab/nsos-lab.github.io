@@ -213,7 +213,7 @@
   /* PI layout: unified card */
   .pi-layout{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:auto 1fr;
     gap:0;
     background:#fff;
     border:1px solid var(--border);
@@ -222,41 +222,35 @@
   }
   @media(max-width:800px){.pi-layout{grid-template-columns:1fr}}
   .pi-left{
-    padding:36px 32px;
-    display:flex;flex-direction:column;align-items:flex-start;gap:14px;
+    padding:32px 36px;
+    display:flex;flex-direction:row;align-items:center;gap:20px;
     border-right:1px solid var(--border);
-    background:linear-gradient(135deg,rgba(10,37,64,.02),rgba(78,205,196,.03));
+    min-width:380px;
   }
-  @media(max-width:800px){.pi-left{border-right:none;border-bottom:1px solid var(--border)}}
-  .pi-left .member{background:transparent;border:none;padding:0;gap:12px;width:100%}
-  .pi-left .avatar{width:72px;height:72px;font-size:22px}
-  .pi-bio{
-    font-size:14px;line-height:1.7;color:var(--text-soft);margin-top:4px;
-  }
-  .pi-bio strong{color:var(--navy)}
-  .pi-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
-  .pi-tags span{
-    font-size:11px;padding:3px 10px;border-radius:4px;
-    background:rgba(78,205,196,.08);border:1px solid rgba(78,205,196,.18);
-    color:var(--accent);letter-spacing:.02em;font-weight:500;
-  }
+  @media(max-width:800px){.pi-left{flex-direction:column;border-right:none;border-bottom:1px solid var(--border);min-width:auto;text-align:center}}
+  .pi-left .member{background:transparent;border:none;padding:0;gap:16px;width:auto;flex-direction:row;align-items:center}
+  @media(max-width:800px){.pi-left .member{flex-direction:column}}
+  .pi-left .avatar{width:80px;height:80px;font-size:24px;box-shadow:0 4px 16px rgba(10,37,64,.12)}
+  .pi-left .member-info{display:flex;flex-direction:column;gap:4px}
   .pi-right{
-    padding:36px 32px;
-    display:grid;grid-template-columns:1fr 1fr;gap:16px;
+    padding:28px 32px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
     align-content:center;
   }
+  @media(max-width:1000px) and (min-width:801px){.pi-right{grid-template-columns:1fr 1fr;gap:16px}}
+  @media(max-width:800px){.pi-right{grid-template-columns:1fr 1fr;gap:12px}}
   .stat-card{
-    background:linear-gradient(135deg,rgba(10,37,64,.03),rgba(78,205,196,.04));
+    background:linear-gradient(135deg,rgba(10,37,64,.02),rgba(78,205,196,.04));
     border:1px solid var(--border);
-    border-radius:14px;padding:28px 20px;
+    border-radius:12px;padding:20px 12px;
     display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;transition:all .3s ease;position:relative;overflow:hidden;
   }
   .stat-card:hover{border-color:var(--accent-2);transform:translateY(-3px);box-shadow:0 8px 24px rgba(78,205,196,.12)}
-  .stat-icon{font-size:26px;margin-bottom:10px}
-  .stat-number{font-size:36px;font-weight:800;background:linear-gradient(135deg,var(--navy),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
-  .stat-label{font-size:12px;color:var(--text-soft);margin-top:8px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
-  .stat-sub{font-size:11px;color:rgba(100,116,139,.8);margin-top:4px}
+  .stat-icon{font-size:24px;margin-bottom:8px}
+  .stat-number{font-size:30px;font-weight:800;background:linear-gradient(135deg,var(--navy),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
+  .stat-label{font-size:11px;color:var(--text-soft);margin-top:6px;letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+  .stat-sub{font-size:10px;color:rgba(100,116,139,.8);margin-top:3px}
   .member{
     background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;
     display:flex;flex-direction:column;align-items:flex-start;gap:10px;
@@ -690,24 +684,15 @@
             <img class="avatar" src="assets/team/xuan-liu.jpg?v=3" alt="Xuan Liu" />
             <div class="member-info">
               <div class="member-name">Xuan Liu</div>
-              <div class="member-role">Lecturer · Graduate Advisor · Ph.D. (Southeast Univ.)</div>
-              <div class="member-role">Yangzhou University, China</div>
+              <div class="member-role">Lecturer · Graduate Advisor</div>
+              <div class="member-role">Ph.D., Southeast University</div>
               <div class="member-interest">Observability · Security</div>
               <div class="member-links">
                 <a href="http://liuxuan.website" target="_blank" rel="noopener">Website</a>
-                <a href="https://scholar.google.com/citations?user=N95MHnkAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+                <a href="https://scholar.google.com/citations?user=N95MHnkAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a>
                 <a href="https://github.com/yusuf1126" target="_blank" rel="noopener">GitHub</a>
               </div>
             </div>
-          </div>
-          <div class="pi-bio">
-            Leading research at the intersection of <strong>system observability</strong>, <strong>agent security</strong>, and <strong>eBPF-based runtime monitoring</strong>. Editorial board member for 9 international journals including IEEE TDSC.
-          </div>
-          <div class="pi-tags">
-            <span>eBPF</span>
-            <span>Agent Security</span>
-            <span>Observability</span>
-            <span>Runtime Safety</span>
           </div>
         </div>
         <div class="pi-right">
