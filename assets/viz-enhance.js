@@ -1,10 +1,22 @@
 /* ============================================================
    NSOS Lab — Shared Visual Enhancement Script
-   Drives scroll reveal, 3D tilt, nav glow. Polish credit: unslop by @heydamir (CC-BY-4.0)
+   Drives hero orbs, scroll reveal, 3D tilt, nav glow.
    Content-neutral. Respects prefers-reduced-motion.
    ============================================================ */
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 1. Inject hero glow orbs (once, inside every .hero) */
+  var heroes = document.querySelectorAll('.hero');
+  heroes.forEach(function (hero) {
+    if (hero.querySelector('.viz-orb')) return;
+    var o1 = document.createElement('div');
+    o1.className = 'viz-orb viz-orb-1';
+    var o2 = document.createElement('div');
+    o2.className = 'viz-orb viz-orb-2';
+    hero.appendChild(o1);
+    hero.appendChild(o2);
+  });
 
   /* 2. Scroll reveal: mark, then observe */
   var SEL = '.member,.pub,.qcard,.card,.phil,.tcard,.section-kicker,.section-lead,.section-title,.join-inner,.team-group,.pub-year';
