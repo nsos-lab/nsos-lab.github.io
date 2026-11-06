@@ -71,7 +71,6 @@
   /* ===== Hero ===== */
   .hero{
     background:
-      radial-gradient(1200px 500px at 80% -10%,rgba(255,94,58,.15),transparent 60%),
       radial-gradient(1000px 600px at -10% 20%,rgba(19,49,87,.08),transparent 60%),
       linear-gradient(180deg,#0A2540 0%,#133157 100%);
     color:#fff;padding:96px 24px 88px;
@@ -94,16 +93,13 @@
     border:1px solid rgba(255,255,255,.18);
     font-size:13px;color:#CBD5E1;margin-bottom:22px;
   }
-  .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;box-shadow:0 0 8px #4ADE80}
+  .hero-badge .status-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:#4ECDC4;letter-spacing:.02em}
   .hero h1{
     font-size:clamp(38px,5.5vw,62px);
     line-height:1.08;letter-spacing:-.02em;font-weight:800;
     margin-bottom:18px;
   }
-  .hero h1 .accent{
-    background:linear-gradient(90deg,var(--accent-2),var(--accent));
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
+  .hero h1 .accent{color:var(--accent-2)}
   .hero .tagline{
     font-size:clamp(17px,1.6vw,20px);
     color:#CBD5E1;max-width:720px;margin-bottom:32px;
@@ -120,8 +116,8 @@
     padding:12px 22px;border-radius:8px;font-weight:600;font-size:15px;
     transition:transform .15s,box-shadow .15s;
   }
-  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 18px rgba(255,94,58,.35)}
-  .btn-primary:hover{transform:translateY(-1px);color:#fff;box-shadow:0 10px 24px rgba(255,94,58,.45)}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 1px 2px rgba(10,37,64,.18)}
+  .btn-primary:hover{transform:translateY(-1px);color:#fff;box-shadow:0 4px 12px rgba(10,37,64,.22)}
   .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
   .btn-ghost:hover{background:rgba(255,255,255,.08);color:#fff}
 
@@ -129,7 +125,7 @@
   section{padding:88px 24px}
   .section-inner{max-width:1100px;margin:0 auto}
   .section-kicker{
-    font-size:13px;font-weight:700;letter-spacing:.14em;
+    font-size:13px;font-weight:700;letter-spacing:.08em;
     color:var(--accent);text-transform:uppercase;margin-bottom:10px;
   }
   .section-title{
@@ -170,7 +166,7 @@
   .team-group{margin-bottom:44px}
   .team-group:last-child{margin-bottom:0}
   .team-group-title{
-    font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
     color:var(--text-soft);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--border);
   }
   .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
@@ -263,12 +259,7 @@
   }
   footer::before{
     content:"";position:absolute;top:0;left:0;right:0;height:2px;
-    background:linear-gradient(90deg,transparent 0%,#4ECDC4 20%,#FF5E3A 50%,#4ECDC4 80%,transparent 100%);
-    animation:footerGlow 4s ease-in-out infinite;
-  }
-  @keyframes footerGlow{
-    0%,100%{opacity:.6}
-    50%{opacity:1}
+    background:linear-gradient(90deg,transparent,rgba(78,205,196,.45),transparent);
   }
   #footer-net{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
   .footer-content{position:relative;z-index:2}
@@ -283,11 +274,6 @@
   .footer-logo-wrap::after{
     content:"";position:absolute;inset:-8px;border-radius:50%;
     background:radial-gradient(circle,rgba(78,205,196,.15),transparent 70%);
-    animation:logoPulse 3s ease-in-out infinite;
-  }
-  @keyframes logoPulse{
-    0%,100%{opacity:.5;transform:scale(1)}
-    50%{opacity:1;transform:scale(1.08)}
   }
   .footer-logo-wrap img{height:64px;width:auto;display:block;position:relative;z-index:1}
   .footer-brand-text strong{color:#E2E8F0;font-size:15px;display:block;margin-bottom:6px}
@@ -383,7 +369,7 @@
 <header class="hero" style="padding:64px 24px 56px">
   <canvas id="hero-net"></canvas>
   <div class="hero-inner">
-    <div class="hero-badge"><span class="dot"></span><span>NSOS Lab · Yangzhou University · China</span></div>
+    <div class="hero-badge"><span class="status-mono">ebpf: attached · ev/s 12.4k</span><span>NSOS Lab · Yangzhou University · China</span></div>
     <h1 style="font-size:clamp(30px,4vw,44px)">Daily at NSOS</h1>
     <p class="tagline" style="margin-bottom:0">Seminars, salons, competitions, technical practice, dinners, and team moments.</p>
   </div>
@@ -395,27 +381,27 @@
     <div class="masonry">
       <figure class="card">
         <img src="assets/life/group-photo.jpg" alt="Group photo in front of the college building" loading="lazy" />
-        <figcaption><span class="chip">📸 Team</span><span class="cap">Group Shot</span></figcaption>
+        <figcaption><span class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg> Team</span><span class="cap">Group Shot</span></figcaption>
       </figure>
       <figure class="card">
         <img src="assets/life/c4-flamesec.jpg" alt="FlameSec team at C4 competition" loading="lazy" />
-        <figcaption><span class="chip">🏆 Competition</span><span class="cap">C4 Network Technology Challenge</span></figcaption>
+        <figcaption><span class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg> Competition</span><span class="cap">C4 Network Technology Challenge</span></figcaption>
       </figure>
       <figure class="card">
         <img src="assets/life/defense.jpg" alt="PhD thesis defense" loading="lazy" />
-        <figcaption><span class="chip">🤝 Academic Salon</span><span class="cap">Sketch-based network measurement</span></figcaption>
+        <figcaption><span class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Academic Salon</span><span class="cap">Sketch-based network measurement</span></figcaption>
       </figure>
       <figure class="card">
         <img src="assets/life/lab-work.jpg" alt="Daily work in the lab" loading="lazy" />
-        <figcaption><span class="chip">💻 Technical Practice</span><span class="cap">Hands-on Attack-Defense &amp; CTF</span></figcaption>
+        <figcaption><span class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg> Technical Practice</span><span class="cap">Hands-on Attack-Defense &amp; CTF</span></figcaption>
       </figure>
       <figure class="card">
         <img src="assets/life/talk.jpg" alt="Research talk" loading="lazy" />
-        <figcaption><span class="chip">🎤 Seminar</span><span class="cap">Seminar on research progress</span></figcaption>
+        <figcaption><span class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg> Seminar</span><span class="cap">Seminar on research progress</span></figcaption>
       </figure>
       <figure class="card">
         <img src="assets/life/dinner.jpg" alt="Lab dinner" loading="lazy" />
-        <figcaption><span class="chip">🍜 Dinner</span><span class="cap">Lab dinner at a Yangzhou restaurant</span></figcaption>
+        <figcaption><span class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg> Dinner</span><span class="cap">Lab dinner at a Yangzhou restaurant</span></figcaption>
       </figure>
     </div>
   </div>
@@ -437,9 +423,9 @@
       </div>
       <div></div>
       <div class="footer-links">
-        <a href="http://liuxuan.website" target="_blank">🔗 PI Website</a>
-        <a href="https://github.com/nsos-lab" target="_blank">🐙 GitHub</a>
-        <a href="https://scholar.google.com/citations?user=N95MHnkAAAAJ&hl=en" target="_blank" rel="noopener">📚 Google Scholar</a>
+        <a href="http://liuxuan.website" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> PI Website</a>
+        <a href="https://github.com/nsos-lab" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path fill="currentColor" stroke="none" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> GitHub</a>
+        <a href="https://scholar.google.com/citations?user=N95MHnkAAAAJ&hl=en" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg> Google Scholar</a>
       </div>
     </div>
     <div class="footer-divider"><hr/></div>
@@ -448,7 +434,7 @@
         <iframe title="NSOS Lab location" src="https://www.openstreetmap.org/export/embed.html?bbox=119.3830%2C32.3389%2C119.3990%2C32.3469&layer=mapnik&marker=32.3429%2C119.3910" loading="lazy"></iframe>
       </div>
       <div class="footer-map-meta">
-        <span>📍 Map data &copy;</span>
+        <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Map data &copy;</span>
         <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>
         <span>&middot;</span>
         <a href="https://www.openstreetmap.org/?mlat=32.3429&mlon=119.3910#map=16/32.3429/119.3910" target="_blank" rel="noopener">View larger map &rarr;</a>
@@ -483,7 +469,7 @@
   var hero=canvas.parentElement;
   var dpr=Math.min(window.devicePixelRatio||1,2);
   var W,H,pts=[],mx=-9e3,my=-9e3;
-  var COLS=['#4ECDC4','#45B7D1','#96E6A1','#FF5E3A','#FFB347','#A78BFA'];
+  var COLS=['#4ECDC4'];
   var LK=150,MR=160,N=85;
   function resize(){var r=hero.getBoundingClientRect();W=r.width;H=r.height;canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0)}
   function init(){pts=[];for(var i=0;i<N;i++){var d=Math.random(),sz=1.5+d*3.2,al=.22+d*.6,sp=.12+d*.35;pts.push({x:Math.random()*W,y:Math.random()*H,z:d,vx:(Math.random()-.5)*sp,vy:(Math.random()-.5)*sp,s:sz,a:al,c:COLS[~~(Math.random()*COLS.length)],p:Math.random()*6.28,ps:.008+Math.random()*.018})}}
@@ -506,7 +492,7 @@
         vx:(Math.random()-.5)*.15,vy:(Math.random()-.5)*.15,
         s:1+Math.random()*2.2,
         a:.12+Math.random()*.4,
-        c:Math.random()>.7?'#4ECDC4':'#45B7D1',
+        c:'#4ECDC4',
         phase:Math.random()*6.28
       });
     }
