@@ -331,7 +331,7 @@
       <div class="qhead">
         <div class="qnum">Q1</div>
         <div>
-          <h3>How severe is the Agent DoS caused by indirect prompt injection, really?</h3>
+          <h3>How severe is the Agent DoS caused by indirect prompt injection?</h3>
           <div class="qmeta">
             <span class="qtag">Indirect Prompt Injection</span>
             <span class="qtag">Agent DoS</span>
@@ -343,7 +343,7 @@
       <div class="qbody">
         <div>
           <h4>Why it matters</h4>
-          <p>LLM agents browse and act on the open web autonomously. Indirect prompt injection lets an ordinary-looking page plant instructions that hijack an agent's control flow, for example by trapping it in execution loops that burn its step, time, and token budgets. This is denial of service at the agent layer, with real cost in tokens and compute, tasks that silently fail, and so far no systematic measurement of how bad it can get.</p>
+          <p>LLM agents browse and act on the open web autonomously. Indirect prompt injection lets an ordinary-looking page plant instructions that hijack an agent's control flow, for example by trapping it in execution loops that burn its step, time, and token budgets. This is denial of service at the agent layer, with real cost in tokens and compute, tasks that silently fail, and so far no systematic measurement of how severe its impact can be.</p>
         </div>
       </div>
     </div>
@@ -353,7 +353,7 @@
       <div class="qhead">
         <div class="qnum">Q2</div>
         <div>
-          <h3>Can eBPF genuinely improve the security and observability of AI agents?</h3>
+          <h3>Can eBPF improve the security and observability of AI agents?</h3>
           <div class="qmeta">
             <span class="qtag">eBPF</span>
             <span class="qtag">Agent Observability</span>
@@ -365,7 +365,7 @@
       <div class="qbody">
         <div>
           <h4>Why it matters</h4>
-          <p>Today's agent guardrails live in the same layer the attacker manipulates, such as prompts, framework hooks, and application logic. But an agent that reasons its way past application-level checks still cannot hide its syscalls, file accesses, and network egress. Kernel-level visibility through eBPF is tamper-resistant, low-overhead, and agent-agnostic, a fundamentally different place to observe and to enforce.</p>
+          <p>Today's agent guardrails live in the same layer the attacker manipulates, such as prompts, framework hooks, and application logic. But an agent that reasons its way past application-level checks still cannot hide its syscalls, file accesses, and network egress. Kernel-level visibility through eBPF is tamper-resistant, low-overhead, and agent-agnostic, a fundamentally different vantage point for observation and enforcement.</p>
         </div>
       </div>
     </div>
