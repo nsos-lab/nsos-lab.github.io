@@ -68,7 +68,6 @@
   /* ===== Hero ===== */
   .hero{
     background:
-      radial-gradient(1200px 500px at 80% -10%,rgba(255,94,58,.15),transparent 60%),
       radial-gradient(1000px 600px at -10% 20%,rgba(19,49,87,.08),transparent 60%),
       linear-gradient(180deg,#0A2540 0%,#133157 100%);
     color:#fff;padding:96px 24px 88px;
@@ -91,16 +90,13 @@
     border:1px solid rgba(255,255,255,.18);
     font-size:13px;color:#CBD5E1;margin-bottom:22px;
   }
-  .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;box-shadow:0 0 8px #4ADE80}
+  .hero-badge .status-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:#4ECDC4;letter-spacing:.02em}
   .hero h1{
     font-size:clamp(38px,5.5vw,62px);
     line-height:1.08;letter-spacing:-.02em;font-weight:800;
     margin-bottom:18px;
   }
-  .hero h1 .accent{
-    background:linear-gradient(90deg,var(--accent-2),var(--accent));
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
+  .hero h1 .accent{color:var(--accent-2)}
   .hero .tagline{
     font-size:clamp(17px,1.6vw,20px);
     color:#CBD5E1;max-width:760px;margin-bottom:0;
@@ -110,7 +106,7 @@
   section{padding:72px 24px}
   .section-inner{max-width:1100px;margin:0 auto}
   .section-kicker{
-    font-size:13px;font-weight:700;letter-spacing:.14em;
+    font-size:13px;font-weight:700;letter-spacing:.08em;
     color:var(--accent);text-transform:uppercase;margin-bottom:10px;
   }
   .section-title{
@@ -152,7 +148,7 @@
   .qtag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:999px;background:#F1F5F9;color:var(--navy-2)}
   .qbody{margin-top:24px;max-width:860px}
   .qbody h4{
-    font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    font-size:12px;letter-spacing:.08em;text-transform:uppercase;
     color:var(--accent);margin-bottom:8px;font-weight:700;
   }
   .qbody p{font-size:14.5px;color:var(--text-soft)}
@@ -170,8 +166,8 @@
     padding:12px 22px;border-radius:8px;font-weight:600;font-size:15px;
     transition:transform .15s,box-shadow .15s;
   }
-  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 18px rgba(255,94,58,.35)}
-  .btn-primary:hover{transform:translateY(-1px);color:#fff;box-shadow:0 10px 24px rgba(255,94,58,.45)}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 1px 2px rgba(10,37,64,.18)}
+  .btn-primary:hover{transform:translateY(-1px);color:#fff;box-shadow:0 4px 12px rgba(10,37,64,.22)}
 
   /* ===== Footer ===== */
   footer{
@@ -181,12 +177,7 @@
   }
   footer::before{
     content:"";position:absolute;top:0;left:0;right:0;height:2px;
-    background:linear-gradient(90deg,transparent 0%,#4ECDC4 20%,#FF5E3A 50%,#4ECDC4 80%,transparent 100%);
-    animation:footerGlow 4s ease-in-out infinite;
-  }
-  @keyframes footerGlow{
-    0%,100%{opacity:.6}
-    50%{opacity:1}
+    background:linear-gradient(90deg,transparent,rgba(78,205,196,.45),transparent);
   }
   #footer-net{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
   .footer-content{position:relative;z-index:2}
@@ -201,11 +192,6 @@
   .footer-logo-wrap::after{
     content:"";position:absolute;inset:-8px;border-radius:50%;
     background:radial-gradient(circle,rgba(78,205,196,.15),transparent 70%);
-    animation:logoPulse 3s ease-in-out infinite;
-  }
-  @keyframes logoPulse{
-    0%,100%{opacity:.5;transform:scale(1)}
-    50%{opacity:1;transform:scale(1.08)}
   }
   .footer-logo-wrap img{height:64px;width:auto;display:block;position:relative;z-index:1}
   .footer-brand-text strong{color:#E2E8F0;font-size:15px;display:block;margin-bottom:6px}
@@ -287,7 +273,7 @@
 <header class="hero" style="padding:72px 24px 64px">
   <canvas id="hero-net"></canvas>
   <div class="hero-inner">
-    <div class="hero-badge"><span class="dot"></span><span>NSOS Lab · Yangzhou University · China</span></div>
+    <div class="hero-badge"><span class="status-mono">ebpf: attached · ev/s 12.4k</span><span>NSOS Lab · Yangzhou University · China</span></div>
     <h1 style="font-size:clamp(32px,4.4vw,48px)">Research at NSOS</h1>
     <p class="tagline">Problem-driven and interest-led. We start from questions that matter in networked-systems observability and AI-agent security, then build the measurements, systems, and evidence to answer them.</p>
   </div>
@@ -301,17 +287,17 @@
     <p class="section-lead">We choose research problems the way practitioners feel them (a system that cannot be observed, an agent that cannot be trusted) and let genuine interest carry the work across layer boundaries.</p>
     <div class="phil-grid">
       <div class="phil">
-        <div class="picon">❓</div>
+        <div class="picon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div>
         <h3>Problem-driven</h3>
         <p>Every project starts from a concrete, well-posed question about real systems, never from a technique looking for an application.</p>
       </div>
       <div class="phil">
-        <div class="picon">🧭</div>
+        <div class="picon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
         <h3>Interest-led</h3>
         <p>We keep room for interest-led exploration. Unexpected behaviors observed in systems often become our next research question.</p>
       </div>
       <div class="phil">
-        <div class="picon">🌉</div>
+        <div class="picon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="2.5"/><path d="m10.2 6.3-3.9 3.9"/><circle cx="4.5" cy="12" r="2.5"/><path d="M7 12h10"/><circle cx="19.5" cy="12" r="2.5"/><path d="m13.8 17.7 3.9-3.9"/><circle cx="12" cy="19.5" r="2.5"/><path d="m10.2 17.7-3.9-3.9"/></svg></div>
         <h3>Across layers</h3>
         <p>We work from kernel to network to agent reasoning, because security and observability problems rarely respect layer boundaries.</p>
       </div>
@@ -380,17 +366,17 @@
     <p class="section-lead">Our open questions grow out of three long-term themes. Q1 lives in agent security; Q2 is where system observability meets agent security.</p>
     <div class="phil-grid">
       <div class="phil">
-        <div class="picon">🛡️</div>
+        <div class="picon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div>
         <h3>Network Security &amp; Vulnerability</h3>
         <p>Intrusion detection, traffic forensics, and automated vulnerability discovery, including fuzzing and zero-day hunting across networks and agents.</p>
       </div>
       <div class="phil">
-        <div class="picon">🔭</div>
+        <div class="picon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44"/><path d="m13.56 11.747 4.332-.924"/><path d="m16 21-3.105-6.21"/><path d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455z"/><path d="m6.158 8.633 1.114 4.456"/><path d="m8 21 3.105-6.21"/><circle cx="12" cy="13" r="2"/></svg></div>
         <h3>System Observability</h3>
         <p>eBPF-based full-stack instrumentation to continuously monitor networked systems with minimal overhead, enabling kernel-to-application tracing in production.</p>
       </div>
       <div class="phil">
-        <div class="picon">🤖</div>
+        <div class="picon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg></div>
         <h3>Agent Security</h3>
         <p>Runtime security, resource-abuse detection, and dependability analysis for LLM-based autonomous agents, bridging OS-level enforcement and agent reasoning.</p>
       </div>
@@ -423,9 +409,9 @@
       </div>
       <div></div>
       <div class="footer-links">
-        <a href="http://liuxuan.website" target="_blank">🔗 PI Website</a>
-        <a href="https://github.com/nsos-lab" target="_blank">🐙 GitHub</a>
-        <a href="https://scholar.google.com/citations?user=N95MHnkAAAAJ&hl=en" target="_blank" rel="noopener">📚 Google Scholar</a>
+        <a href="http://liuxuan.website" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> PI Website</a>
+        <a href="https://github.com/nsos-lab" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path fill="currentColor" stroke="none" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> GitHub</a>
+        <a href="https://scholar.google.com/citations?user=N95MHnkAAAAJ&hl=en" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg> Google Scholar</a>
       </div>
     </div>
     <div class="footer-divider"><hr/></div>
@@ -434,7 +420,7 @@
         <iframe title="NSOS Lab location" src="https://www.openstreetmap.org/export/embed.html?bbox=119.3830%2C32.3389%2C119.3990%2C32.3469&layer=mapnik&marker=32.3429%2C119.3910" loading="lazy"></iframe>
       </div>
       <div class="footer-map-meta">
-        <span>📍 Map data &copy;</span>
+        <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Map data &copy;</span>
         <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>
         <span>&middot;</span>
         <a href="https://www.openstreetmap.org/?mlat=32.3429&mlon=119.3910#map=16/32.3429/119.3910" target="_blank" rel="noopener">View larger map &rarr;</a>
@@ -469,7 +455,7 @@
   var hero=canvas.parentElement;
   var dpr=Math.min(window.devicePixelRatio||1,2);
   var W,H,pts=[],mx=-9e3,my=-9e3;
-  var COLS=['#4ECDC4','#45B7D1','#96E6A1','#FF5E3A','#FFB347','#A78BFA'];
+  var COLS=['#4ECDC4'];
   var LK=150,MR=160,N=85;
   function resize(){var r=hero.getBoundingClientRect();W=r.width;H=r.height;canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0)}
   function init(){pts=[];for(var i=0;i<N;i++){var d=Math.random(),sz=1.5+d*3.2,al=.22+d*.6,sp=.12+d*.35;pts.push({x:Math.random()*W,y:Math.random()*H,z:d,vx:(Math.random()-.5)*sp,vy:(Math.random()-.5)*sp,s:sz,a:al,c:COLS[~~(Math.random()*COLS.length)],p:Math.random()*6.28,ps:.008+Math.random()*.018})}}
@@ -492,7 +478,7 @@
         vx:(Math.random()-.5)*.15,vy:(Math.random()-.5)*.15,
         s:1+Math.random()*2.2,
         a:.12+Math.random()*.4,
-        c:Math.random()>.7?'#4ECDC4':'#45B7D1',
+        c:'#4ECDC4',
         phase:Math.random()*6.28
       });
     }
