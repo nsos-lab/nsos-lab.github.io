@@ -194,6 +194,30 @@
   .member-links{display:flex;gap:10px;margin-top:8px}
   .member-links a{font-size:12px;color:var(--text-soft)}
   .member-links a:hover{color:var(--accent)}
+  /* Featured PI card: full-width horizontal layout */
+  .member.pi-featured{
+    grid-column:1/-1;flex-direction:row;align-items:center;gap:26px;
+    padding:28px 32px;
+    background:linear-gradient(135deg,#fff 60%,rgba(78,205,196,.06));
+    border-left:4px solid var(--accent);
+  }
+  .member.pi-featured .avatar{width:96px;height:96px;box-shadow:0 4px 14px rgba(11,61,84,.15)}
+  .member.pi-featured .member-name{font-size:20px}
+  .member.pi-featured .member-role{font-size:14px}
+  .pi-badge{
+    display:inline-block;vertical-align:middle;margin-left:10px;
+    font-size:11px;font-weight:600;letter-spacing:.3px;
+    color:var(--navy);background:rgba(78,205,196,.16);
+    border:1px solid rgba(78,205,196,.45);border-radius:999px;
+    padding:3px 10px;white-space:nowrap;
+  }
+  .pi-affil{font-size:13px;color:var(--text-soft);margin-top:2px;line-height:1.5}
+  .pi-highlights{display:flex;gap:26px;margin-top:12px;flex-wrap:wrap}
+  .pi-hl b{display:block;font-size:19px;color:var(--navy);line-height:1.1}
+  .pi-hl span{font-size:12px;color:var(--text-soft)}
+  @media (max-width:640px){
+    .member.pi-featured{flex-direction:column;align-items:flex-start;gap:14px;padding:22px}
+  }
 
   /* ===== Publications ===== */
   .pub-year{
@@ -386,18 +410,23 @@
     <div class="team-group">
       <div class="team-group-title">Principal Investigator</div>
       <div class="team-grid">
-        <div class="member">
+        <div class="member pi-featured">
           <img class="avatar" src="assets/team/xuan-liu.jpg?v=2" alt="Xuan Liu" />
           <div class="member-info">
-            <div class="member-name">Xuan Liu</div>
+            <div class="member-name">Xuan Liu <span class="pi-badge">Senior Member, IEEE/CCF</span></div>
             <div class="member-role">Lecturer · Graduate Advisor · Ph.D. (Southeast University)</div>
-            <div class="member-role">Yangzhou University, China</div>
-            <div class="member-interest">Observability · Security</div>
+            <div class="pi-affil">College of Information and Artificial Intelligence (College of Industrial Software),<br/>Yangzhou University, China</div>
+            <div class="member-interest">Observability · Security · Agentic AI</div>
             <div class="member-links">
               <a href="http://liuxuan.website" target="_blank">Website</a>
               <a href="https://scholar.google.com/citations?user=N95MHnkAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
               <a href="https://github.com/yusuf1126" target="_blank" rel="noopener">GitHub</a>
             </div>
+          </div>
+          <div class="pi-highlights">
+            <div class="pi-hl"><b>67+</b><span>Publications</span></div>
+            <div class="pi-hl"><b>50+</b><span>PC Memberships</span></div>
+            <div class="pi-hl"><b>9</b><span>Editorial Boards</span></div>
           </div>
         </div>
       </div>
