@@ -253,16 +253,26 @@
   .stat-card:hover .stat-hint{opacity:1}
   /* ===== Stat detail modals ===== */
   .stat-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(10,37,64,.55);backdrop-filter:blur(4px)}
-  .stat-modal.open{display:flex}
-  .stat-modal-card{background:#fff;border-radius:16px;max-width:540px;width:100%;max-height:80vh;overflow-y:auto;padding:28px 30px;position:relative;box-shadow:0 24px 64px rgba(10,37,64,.3)}
-  .stat-modal-card h3{margin:0 0 4px;font-size:19px;color:var(--navy)}
+  .stat-modal.open{display:flex;animation:modalFade .25s ease}
+  .stat-modal-card{background:#fff;border-radius:16px;max-width:540px;width:100%;max-height:80vh;overflow-y:auto;padding:30px 30px 24px;position:relative;box-shadow:0 24px 64px rgba(10,37,64,.3)}
+  .stat-modal.open .stat-modal-card{animation:modalPop .32s cubic-bezier(.2,.8,.3,1.08)}
+  .stat-modal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--navy),var(--accent));border-radius:16px 16px 0 0}
+  @keyframes modalFade{from{opacity:0}}
+  @keyframes modalPop{from{opacity:0;transform:translateY(18px) scale(.97)}}
+  .stat-modal-card::-webkit-scrollbar{width:6px}
+  .stat-modal-card::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+  .stat-modal-card h3{margin:0 0 4px;font-size:19px;color:var(--navy);display:flex;align-items:center;gap:8px}
+  .stat-modal-card h3::after{content:'';flex:0 0 28px;height:2px;background:var(--accent);border-radius:1px}
   .stat-modal-card .modal-sub{font-size:12.5px;color:var(--text-soft);margin-bottom:14px}
+  .stat-modal-card .modal-foot{font-size:12px;color:var(--text-soft);margin-top:14px;padding-top:12px;border-top:1px solid var(--border)}
   .stat-modal-card ul{margin:0;padding:0;list-style:none}
-  .stat-modal-card li{padding:9px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text);display:flex;justify-content:space-between;gap:14px;align-items:baseline}
-  .stat-modal-card li:last-child{border-bottom:none}
+  .stat-modal-card li{padding:9px 10px;margin:0 -10px;border-radius:8px;border-bottom:1px solid var(--border);font-size:14px;color:var(--text);display:flex;justify-content:space-between;gap:14px;align-items:baseline;transition:background .2s}
+  .stat-modal-card li:hover{background:rgba(78,205,196,.07)}
+  .stat-modal-card li:last-of-type{border-bottom:none}
   .stat-modal-card li .li-role{color:var(--text-soft);font-size:12px;white-space:nowrap;text-align:right}
-  .modal-close{position:absolute;top:14px;right:16px;border:none;background:none;font-size:22px;color:var(--text-soft);cursor:pointer;line-height:1;padding:2px}
-  .modal-close:hover{color:var(--navy)}
+  .stat-modal-card li .ptag{flex-shrink:0}
+  .modal-close{position:absolute;top:14px;right:16px;border:none;background:none;font-size:22px;color:var(--text-soft);cursor:pointer;line-height:1;padding:2px;transition:color .2s,transform .2s}
+  .modal-close:hover{color:var(--navy);transform:rotate(90deg)}
   .stat-number{font-size:28px;font-weight:800;background:linear-gradient(135deg,var(--navy),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
   .stat-label{font-size:11px;color:var(--text-soft);margin-top:6px;letter-spacing:.05em;text-transform:uppercase;font-weight:600}
   .stat-sub{font-size:10px;color:rgba(100,116,139,.8);margin-top:3px}
@@ -712,28 +722,28 @@
         </div>
         <div class="pi-right">
           <a class="stat-card" href="publications.html">
-            <div class="stat-icon">📄</div>
+            <div class="stat-icon">📚</div>
             <div class="stat-number">67+</div>
             <div class="stat-label">Publications</div>
             <div class="stat-sub">SIGCOMM, INFOCOM, NSDI, USENIX Sec, KDD, &amp; more</div>
             <span class="stat-hint">View →</span>
           </a>
           <a class="stat-card" href="research.html">
-            <div class="stat-icon">🔬</div>
+            <div class="stat-icon">🧭</div>
             <div class="stat-number">3</div>
             <div class="stat-label">Research Lines</div>
             <div class="stat-sub">NetSec · Observability · Agent</div>
             <span class="stat-hint">View →</span>
           </a>
           <div class="stat-card clickable" onclick="openStatModal('modal-pc')">
-            <div class="stat-icon">👥</div>
+            <div class="stat-icon">🏛️</div>
             <div class="stat-number">50+</div>
             <div class="stat-label">PC Memberships</div>
             <div class="stat-sub">CCS, NDSS &amp; more</div>
             <span class="stat-hint">Details +</span>
           </div>
           <div class="stat-card clickable" onclick="openStatModal('modal-eb')">
-            <div class="stat-icon">🏅</div>
+            <div class="stat-icon">📰</div>
             <div class="stat-number">9</div>
             <div class="stat-label">Editorial Boards</div>
             <div class="stat-sub">IEEE TDSC & more</div>
@@ -1281,18 +1291,19 @@
     <h3>PC Memberships</h3>
     <div class="modal-sub">Conference program committee services</div>
     <ul>
-      <li>NDSS 2027 — Posters <span class="li-role">PC Member · 2026</span></li>
-      <li>ACM CCS 2026 — Posters <span class="li-role">PC Member · 2026</span></li>
-      <li>ACM CCS 2026 — Demos <span class="li-role">PC Member · 2026</span></li>
-      <li>NDSS 2026 <span class="li-role">Student Support Committee · 2025</span></li>
-      <li>ACM MobiCom 2020 — Workshop <span class="li-role">PC Member</span></li>
-      <li>IEEE INFOCOM 2020 — Workshop <span class="li-role">PC Member</span></li>
+      <li>NDSS 2027 — Posters <span class="ptag tier-a">CCF A</span> <span class="li-role">PC Member · 2026</span></li>
+      <li>ACM CCS 2026 — Posters <span class="ptag tier-a">CCF A</span> <span class="li-role">PC Member · 2026</span></li>
+      <li>ACM CCS 2026 — Demos <span class="ptag tier-a">CCF A</span> <span class="li-role">PC Member · 2026</span></li>
+      <li>NDSS 2026 <span class="ptag tier-a">CCF A</span> <span class="li-role">Student Support Committee · 2025</span></li>
+      <li>ACM MobiCom 2020 — Workshop <span class="ptag tier-a">CCF A</span> <span class="li-role">PC Member</span></li>
+      <li>IEEE INFOCOM 2020 — Workshop <span class="ptag tier-a">CCF A</span> <span class="li-role">PC Member</span></li>
       <li>IEEE NOMS 2022 <span class="li-role">TPC Member</span></li>
       <li>IFIP/IEEE IM 2021 <span class="li-role">TPC Member</span></li>
       <li>IEEE ICC <span class="li-role">TPC Member · 2020–2026</span></li>
       <li>IEEE Globecom <span class="li-role">TPC Member · 2019–2026</span></li>
       <li>… <span class="li-role">and 30+ more (WCNC, PIMRC, VTC, APNOMS, GIIS, etc.)</span></li>
     </ul>
+    <div class="modal-foot">Total: 50+ conference services</div>
   </div>
 </div>
 <div class="stat-modal" id="modal-eb" onclick="if(event.target===this)closeStatModal(this)">
@@ -1309,6 +1320,7 @@
       <li>IET Smart Cities <span class="li-role">Associate Editor · 2020–</span></li>
       <li>… <span class="li-role">and 3 more editorial roles</span></li>
     </ul>
+    <div class="modal-foot">Total: 9 journal editorial boards</div>
   </div>
 </div>
 <script>
