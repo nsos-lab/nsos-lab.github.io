@@ -346,6 +346,29 @@
     display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;
     padding:2px 8px;border-radius:4px;background:#EEF2FF;color:var(--navy);margin-right:8px;
   }
+  /* Pinned CFP item with glowing star */
+  .news-item.pinned{
+    position:relative;border-color:rgba(226,61,40,.35);
+    background:linear-gradient(90deg,rgba(226,61,40,.055),rgba(78,205,196,.05) 60%,#fff);
+    animation:pinnedGlow 2.8s ease-in-out infinite;
+  }
+  @keyframes pinnedGlow{
+    0%,100%{box-shadow:0 0 0 0 rgba(226,61,40,0)}
+    50%{box-shadow:0 0 20px 2px rgba(226,61,40,.16)}
+  }
+  .news-item.pinned .news-date{color:#C0392B}
+  .news-tag.cfp{background:#FEE2E2;color:#B91C1C;border:1px solid rgba(185,28,28,.25)}
+  .news-star{
+    display:inline-block;margin-right:6px;font-size:13px;line-height:1;color:#E23D28;
+    animation:starPulse 1.8s ease-in-out infinite;
+  }
+  @keyframes starPulse{
+    0%,100%{opacity:.45;transform:scale(.88)}
+    50%{opacity:1;transform:scale(1.18);text-shadow:0 0 8px rgba(226,61,40,.85),0 0 18px rgba(226,61,40,.45)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .news-item.pinned,.news-star{animation:none}
+  }
 
   /* ===== Join Us ===== */
   .join{
@@ -778,6 +801,10 @@
     <h2 class="section-title">Recent updates</h2>
 
     <div class="news-list">
+      <div class="news-item pinned">
+        <div class="news-date"><span class="news-star">✦</span>2026-11</div>
+        <div class="news-body"><span class="news-tag cfp">CFP</span>Special Issue on <a href="https://www.computer.org/digital-library/journals/tq/cfp-observability-dependable-secure-agent" target="_blank" rel="noopener"><strong>Observability for Dependable and Secure Agent Systems</strong></a>.</div>
+      </div>
       <div class="news-item">
         <div class="news-date">2026-11</div>
         <div class="news-body"><span class="news-tag">CONF</span>Xuan Liu was named a PC member for <strong>NDSS'27 Posters</strong>.</div>
