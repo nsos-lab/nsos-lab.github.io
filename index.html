@@ -357,19 +357,25 @@
     50%{box-shadow:0 0 20px 2px rgba(226,61,40,.16)}
   }
   .news-item.pinned .news-date{color:#C0392B}
-  .news-tag.cfp{background:#FEE2E2;color:#B91C1C;border:1px solid rgba(185,28,28,.25)}
-  .news-star{
-    display:inline-block;margin-right:6px;font-size:13px;line-height:1;color:#E23D28;
-    animation:starPulse 1.8s ease-in-out infinite;
+  .news-tag.cfp{
+    background:#FEE2E2;color:#B91C1C;border:1px solid rgba(185,28,28,.25);
+    animation:cfpGlow 1.8s ease-in-out infinite;
   }
-  .news-item.pinned .news-star{position:absolute;left:2px;top:14px;margin:0}
   .news-deadline{font-size:13.5px;color:var(--text-soft)}
-  @keyframes starPulse{
-    0%,100%{opacity:.45;transform:scale(.88)}
-    50%{opacity:1;transform:scale(1.18);text-shadow:0 0 8px rgba(226,61,40,.85),0 0 18px rgba(226,61,40,.45)}
+  @keyframes cfpGlow{
+    0%,100%{
+      color:#B91C1C;border-color:rgba(185,28,28,.25);
+      box-shadow:0 0 0 0 rgba(226,61,40,0);
+      text-shadow:0 0 0 rgba(226,61,40,0);
+    }
+    50%{
+      color:#E23D28;border-color:rgba(226,61,40,.75);
+      box-shadow:0 0 10px rgba(226,61,40,.55),0 0 18px rgba(226,61,40,.22);
+      text-shadow:0 0 8px rgba(226,61,40,.8),0 0 16px rgba(226,61,40,.4);
+    }
   }
   @media (prefers-reduced-motion:reduce){
-    .news-item.pinned,.news-star{animation:none}
+    .news-item.pinned,.news-tag.cfp{animation:none}
   }
 
   /* ===== Join Us ===== */
@@ -805,7 +811,7 @@
     <div class="news-list">
       <div class="news-item pinned">
         <div class="news-date">2026-11</div>
-        <div class="news-body"><span class="news-star">✦</span><span class="news-tag cfp">CFP</span><a href="https://www.computer.org/digital-library/journals/tq/cfp-observability-dependable-secure-agent" target="_blank" rel="noopener"><strong>IEEE TDSC Special Issue on Observability for Dependable and Secure Agent Systems</strong></a> <span class="news-deadline">(Submission deadline: 30 September 2027)</span></div>
+        <div class="news-body"><span class="news-tag cfp">CFP</span><a href="https://www.computer.org/digital-library/journals/tq/cfp-observability-dependable-secure-agent" target="_blank" rel="noopener"><strong>IEEE TDSC Special Issue on Observability for Dependable and Secure Agent Systems</strong></a> <span class="news-deadline">(Submission deadline: 30 September 2027)</span></div>
       </div>
       <div class="news-item">
         <div class="news-date">2026-11</div>
